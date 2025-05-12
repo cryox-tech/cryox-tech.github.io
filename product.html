@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CryoX</title>
+    <style>
+        /* Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
+            /* background-color: #fafafa; */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            padding: 20px;
+            /* background: #fff; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* border-bottom: 1px solid #eee; */
+        }
+
+        /* Logo */
+        h1 {
+            font-size: 1.8em;
+            font-weight: normal;
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav a:hover {
+            /* background-color: #f0f0f0; */
+            color: #0077aa;
+        }
+
+        /* 初始狀態，讓導航隱藏 */
+        .navbar {
+            opacity: 0;
+            transform: translateY(-20px);
+            /* 可加入滑動效果看起來更動感 */
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        /* 當頁面載入後生效，新增class或使用JavaScript觸發 */
+        .navbar.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* Top descriptive section */
+        #intro {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        #intro h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        #intro p {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        /* Slideshow styles */
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            /* max-width: 1000px; */
+            height: 600px;
+            /* margin: 40px auto; */
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 100px;
+        }
+
+        .slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .slide.show {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .description {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            /* color: #fff; */
+            padding: 10px;
+            font-size: 1em;
+            text-align: center;
+        }
+
+        /* Footer at the end of the page, do not fix it */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <header>
+        <!-- <h1><a href="#" style="text-decoration:none; color:#222;">CryoX</a></h1> -->
+
+        <nav id="navbar" class="navbar"
+            style="position: fixed; top: 0; width: 100%; background-color: transparent; z-index: 1000;">
+            <div style="display: flex; justify-content: flex-end; align-items: center; padding: 10px 20px;">
+                <ul style="margin: 0; padding: 0; list-style: none; display: flex; gap: 20px;">
+                    <li><a href="#home" style="text-decoration: none; color: #000;">Home</a></li>
+                    <li><a href="about.html" style="text-decoration: none; color: #000;">About</a></li>
+                    <li><a href="product.html" style="text-decoration: none; color: #000;">Product</a></li>
+                    <li><a href="#footer-contact" style="text-decoration: none; color: #000;">Contact</a></li>
+                </ul>
+                <a href="index.html" style="margin-left: 20px;">
+                    <img src="images/transparent_logo.png" alt="Logo" style="height: 40px;">
+                </a>
+            </div>
+        </nav>
+
+
+    </header>
+
+    <section
+        style="display: flex; flex-direction: column; align-items: flex-start; padding: 20px;background-color: transparent;">
+        <img src="images/transparent_logo.png" alt="Logo"
+            style="width: 60px; height: auto; margin-bottom: 10px; margin-left: 32px;">
+        <h1
+            style="writing-mode: vertical-rl; font-size: 34px; font-weight: bold; margin-bottom: 80px; margin-left: 40px;">
+            空 室
+        </h1>
+
+
+
+
+        <!-- Footer -->
+
+        <footer id="footer-contact"
+            style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #ccc; margin-left: 40px; margin-right: 40px;">
+            <div style="flex: 1;">
+                <p style="border-bottom: 80px;"> Opening Hours 10:00 a.m. - 6:00 p.m. </p>
+
+                <p style="border-top: 20px ;max-width: 600px;">Please feel free to email us if you
+                    have any questions or interested to collaborate. </p>
+                <br> TEL +886-318-0248
+                <br> MAIL cryox.tw@gmail.com
+                <br> © CryoX. All rights reserved.
+                </p>
+            </div>
+
+            <!-- 右側：縱向文字 -->
+            <div style="writing-mode: vertical-rl;  margin-left: auto; font-size: 32px;
+		font-weight: bold; margin-bottom: 80px; margin-right: 40px;">
+                <p style="margin-bottom: 20px;">量子序化所 CryoX</p>
+                <p style="margin-bottom: 20px;font-size: 16px;margin-right: 10px; margin-top: 15px;">
+                    桃園市龜山區大湖路63號</p>
+
+
+
+
+
+            </div>
+        </footer>
+        </div>
+
+        <script>
+            window.addEventListener('load', () => {
+                document.querySelector('.navbar').classList.add('show');
+            });
+        </script>
+
+        <script>
+            const navbar = document.getElementById('navbar');
+            let lastScrollTop = 0;
+
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (scrollTop > lastScrollTop) {
+                    // Scrolling down
+                    navbar.style.top = "-20px"; // hide the nav (adjust if needed)
+                } else {
+                    // Scrolling up
+                    navbar.style.top = "0"; // show the nav
+                }
+                lastScrollTop = scrollTop;
+            });
+        </script>
+
+</body>
+
+</html>
