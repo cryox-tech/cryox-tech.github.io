@@ -161,9 +161,9 @@
 				display: block;
 				width: 25px;
 				height: 3px;
-				background-color: gray;
+				background-color: transparent;
 				/* White lines */
-				margin: 2px 0;
+				margin: 4px 0;
 				/* Spacing between lines */
 				transition: background-color 0.3s ease;
 				/* Smooth hover effect */
@@ -173,19 +173,49 @@
 			.nav-mobile {
 				position: fixed;
 				top: 0;
-				left: -250px;
+				left: -100%;
 				/* Initially hidden off-screen */
-				width: 50px;
-				height: 30%;
-				background-color: #333;
-				color: #fff;
+				width: 250px;
+				height: 100%;
+				background-color: #fff;
+				/* White background */
+				color: #666;
+				/* Gray text */
 				overflow-y: auto;
-				transition: transform 0.3s ease;
+				box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+				/* Subtle shadow for better visibility */
+				transition: left 0.3s ease;
 				/* Smooth slide-in effect */
+				z-index: 999;
+				/* Below the hamburger button */
+			}
+
+			.nav-mobile ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			.nav-mobile li {
+				padding: 15px 20px;
+				border-bottom: 1px solid #ddd;
+				/* Divider between menu items */
+			}
+
+			.nav-mobile a {
+				text-decoration: none;
+				color: #666;
+				/* Gray text */
+				font-size: 16px;
+			}
+
+			.nav-mobile a:hover {
+				color: #333;
+				/* Darker gray on hover */
 			}
 
 			.nav-mobile.open {
-				transform: translateX(250px);
+				left: 0;
 				/* Slide the menu into view */
 			}
 		}
