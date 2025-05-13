@@ -167,6 +167,48 @@
 			align-items: center;
 			padding: 20px;
 		}
+
+		#dropdown-menu {
+			display: none;
+			/* Hide the menu by default */
+			position: absolute;
+			/* Adjust positioning as needed */
+			background-color: #f9f9f9;
+			/* Style as desired */
+			min-width: 160px;
+			box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+			z-index: 1;
+			/* Ensure it's on top */
+		}
+
+		#dropdown-menu a {
+			color: black;
+			padding: 12px 16px;
+			text-decoration: none;
+			display: block;
+		}
+
+		#dropdown-button {
+			/* Style the button */
+		}
+
+		@media (min-width: 769px) {
+
+			/* For larger screens, show the nav normally */
+			#dropdown-button {
+				display: none;
+				/* Hide the button on larger screens */
+			}
+
+			#dropdown-menu {
+				display: block;
+				/* Show the menu on larger screens */
+				position: static;
+				/* Remove absolute positioning */
+				box-shadow: none;
+				min-width: auto;
+			}
+		}
 	</style>
 </head>
 
@@ -189,6 +231,16 @@
 				</a>
 			</div>
 		</nav>
+		<nav>
+			<button id="dropdown-button">Menu</button> <!-- Or a link: <a href="#">Menu</a> -->
+			<div id="dropdown-menu">
+				<a href="#home">Home</a>
+				<a href="#about">About</a>
+				<a href="#services">Services</a>
+				<a href="#contact">Contact</a>
+			</div>
+		</nav>
+
 
 
 	</header>
@@ -302,6 +354,31 @@
 				navbar.style.top = "0"; // show the nav
 			}
 			lastScrollTop = scrollTop;
+		});
+	</script>
+
+	<!-- Dropdown Menu Mobile-->
+	<script>
+
+		window.addEventListener('scroll', function () {
+			const dropdownMenu = document.getElementById('dropdown-menu');
+			const scrollPosition = window.scrollY;
+
+			if (scrollPosition > 50) { // Adjust '50' to the scroll distance you want
+				dropdownMenu.style.display = 'block'; // Or add a class:  dropdownMenu.classList.add('show');
+			} else {
+				dropdownMenu.style.display = 'none'; // Or remove the class: dropdownMenu.classList.remove('show');
+			}
+		});
+
+		// Optional:  Toggle the dropdown on button click
+		document.getElementById('dropdown-button').addEventListener('click', function () {
+			const dropdownMenu = document.getElementById('dropdown-menu');
+			if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
+				dropdownMenu.style.display = 'block';
+			} else {
+				dropdownMenu.style.display = 'none';
+			}
 		});
 	</script>
 
