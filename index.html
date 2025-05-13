@@ -245,8 +245,6 @@
 			margin: 10px 20px;
 			/* Small margin around the slideshow */
 			overflow: hidden;
-			background-color: #000;
-			/* Optional: Add a background color for contrast */
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -315,6 +313,50 @@
 				/* Further reduce height for very small screens */
 			}
 		}
+
+		/* Container for vertical and horizontal text */
+		.content-container {
+			display: flex;
+			/* Align items horizontally */
+			justify-content: space-between;
+			/* Space between vertical and horizontal text */
+			align-items: flex-start;
+			/* Align items at the top */
+			gap: 20px;
+			/* Add spacing between the two sections */
+			padding: 20px;
+		}
+
+		.vertical-text {
+			writing-mode: vertical-rl;
+			font-size: 32px;
+			font-weight: bold;
+			margin-left: auto;
+			margin-right: 20px;
+			margin-top: 40px;
+			margin-bottom: 20px;
+		}
+
+		.horizontal-text {
+			flex: 1;
+			/* Allow horizontal text to take up remaining space */
+			font-size: 16px;
+			line-height: 1.5;
+			text-align: left;
+			margin-right: auto;
+			margin-top: 40px;
+			/* Align horizontal text to the left */
+			margin-left: 20px;
+		}
+
+
+		.footer {
+			margin-top: 20px;
+			margin-bottom: 20px;
+			font-size: 14px;
+			color: gray;
+			text-align: center;
+		}
 	</style>
 
 </head>
@@ -370,8 +412,13 @@
 				<img src="/images/zen_vibe_wine.jpeg" alt="Image 2" />
 				<div class="description">量子序化</div>
 			</div>
+			<div class="slide">
+				<img src="/images/small_molecules.jpeg" alt="Image 3" />
+				<div class="description">小分子膠原蛋白</div>
+			</div>
 		</div>
 	</div>
+
 
 	<script>
 		document.addEventListener('DOMContentLoaded', () => {
@@ -398,8 +445,9 @@
 		<!-- Contact Information -->
 
 		<div class="horizontal-text">
-			<p style=" border-top: 20px ;max-width: 400px; color: gray;margin-bottom: 20px;"> Please feel free to email
-				us or call us during business hour if you have any questions or interested to collaborate. </p>
+			<p style=" border-top: 20px ;max-width: 400px; color: gray;margin-bottom: 20px;"> Please feel free to
+				email us or call us during business hour if you have any questions or interested to collaborate.
+			</p>
 			<p> Opening Hours 10:00 a.m. - 6:00 p.m.</p>
 			<p> TEL 03-318-0248</p>
 			<p> MAIL cryox.tw@gmail.com</p>
@@ -419,67 +467,8 @@
 		<footer class=" footer">
 			<br> 養好身心，過好日子
 			<br> © CryoX. All rights reserved.
-			</p>
 		</footer>
 	</div>
-	<style>
-		/* Container for vertical and horizontal text */
-		.content-container {
-			display: flex;
-			/* Align items horizontally */
-			justify-content: space-between;
-			/* Space between vertical and horizontal text */
-			align-items: flex-start;
-			/* Align items at the top */
-			gap: 20px;
-			/* Add spacing between the two sections */
-			padding: 20px;
-		}
-
-		.vertical-text {
-			writing-mode: vertical-rl;
-			font-size: 32px;
-			font-weight: bold;
-			margin-left: auto;
-			margin-right: 20px;
-			margin-top: 40px;
-			margin-bottom: 20px;
-		}
-
-
-
-		.horizontal-text {
-			flex: 1;
-			/* Allow horizontal text to take up remaining space */
-			font-size: 16px;
-			line-height: 1.5;
-			text-align: left;
-			margin-right: auto;
-			margin-top: 40px;
-			/* Align horizontal text to the left */
-			margin-left: 20px;
-		}
-
-		@media (max-width: 768px) {
-			#content-container {
-				font-size: 14px;
-				/* Smaller font size for mobile */
-				line-height: 1.4;
-				/* Adjust line height for smaller screens */
-				padding: 12px;
-				/* Reduce padding for mobile */
-			}
-		}
-
-
-		.footer {
-			margin-top: 20px;
-			margin-bottom: 20px;
-			font-size: 14px;
-			color: gray;
-			text-align: center;
-		}
-	</style>
 
 </body>
 
