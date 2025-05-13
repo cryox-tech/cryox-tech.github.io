@@ -118,8 +118,8 @@
 
 			.title {
 				writing-mode: vertical-rl;
-				transform: rotate(180deg);
 				margin-top: 10px;
+				margin-bottom: 10px;
 			}
 
 			.description {
@@ -135,8 +135,11 @@
 			.hamburger {
 				position: absolute;
 				top: 20px;
-				right: 20px;
+				left: 20px;
 				display: block;
+				z-index: 1000;
+				/* Ensure it stays above other elements */
+				cursor: pointer;
 			}
 
 			/* Show hamburger only when scrolling down can be handled via JS */
@@ -147,7 +150,6 @@
 				left: 0;
 				width: 200px;
 				height: 100%;
-				background: #fff;
 				box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
 				padding: 20px;
 				overflow-y: auto;
@@ -272,10 +274,10 @@
 		<!-- Navigation for mobile -->
 		<nav class="nav-mobile" id="mobileNav">
 			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Product</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="product.html">Product</a></li>
+				<li><a href="#content-container">Contact</a></li>
 			</ul>
 
 		</nav>
@@ -318,7 +320,7 @@
 		<!-- Contact Information -->
 
 		<div class="horizontal-text">
-			<p style="font-size: 24px;"> Opening Hours: 10:00 a.m. - 6:00 p.m.</p>
+			<p style="font-size: 20px;"> Opening Hours: 10:00 a.m. - 6:00 p.m.</p>
 			<p style="font-size: 18px;"> TEL +886-318-0248</p>
 			<p style="font-size: 18px;"> MAIL cryox.tw@gmail.com</p>
 			<p style=" border-top: 20px ;max-width: 600px;"> Please feel free to email us if you
@@ -402,8 +404,7 @@
 			}
 
 			.vertical-text {
-				writing-mode: horizontal-tb;
-				/* Change to horizontal text for better readability */
+				writing-mode: vertical-lr;
 				text-align: center;
 				margin-bottom: 20px;
 			}
