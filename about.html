@@ -1,281 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!--styles-->
-<style>
-    /* styles.css */
-    /* Basic Reset */
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        background-color: #f0f0f0;
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CryoX</title>
 
 
-    }
+    <style>
+        /* styles.css */
+        /* Basic Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            background-color: #f0ece3ed;
 
-    /* Desktop styles */
-    @media (min-width: 768px) {
-        header {
+
+        }
+
+        /* Desktop styles */
+        @media (min-width: 768px) {
+            header {
+                display: flex;
+                justify-content: space-between;
+                padding: 20px;
+                align-items: flex-start;
+                position: relative;
+            }
+
+            .logo-title {
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                margin: 0px;
+                width: auto;
+                height: auto;
+            }
+
+            .logo {
+                width: 60px;
+                height: auto
+            }
+
+            .title {
+                writing-mode: vertical-rl;
+                margin-top: 10px;
+                margin-left: 7px;
+                margin-bottom: 40px;
+                font-size: 40px;
+            }
+
+            /* Description in gray, below logo and title */
+            .description {
+                margin-top: 10px;
+                color: gray;
+                text-align: left;
+                max-width: 300px;
+                margin-left: 7px;
+                font-size: 14px;
+            }
+
+            /* Navigation on top right - horizontal */
+            .nav-desktop {
+                background-color: transparent;
+                display: flex;
+                opacity: 0;
+                transform: translateY(-20px);
+                /* Start slightly above */
+                transition: opacity 0.5s ease, transform 0.5s ease;
+                margin-top: 20px;
+
+            }
+
+            .nav-desktop ul {
+                display: flex;
+                list-style: none;
+            }
+
+            .nav-desktop li {
+                margin-left: 20px;
+            }
+
+            .nav-desktop a {
+                text-decoration: none;
+                color: black;
+            }
+
+            .nav-desktop.show {
+                opacity: 1;
+                transform: translateY(0);
+                /* Slide into place */
+            }
+
+            /* Hide mobile hamburger */
+            .hamburger {
+                display: none;
+            }
+
+            #mobileNav {
+                display: none;
+            }
+        }
+
+        /* Mobile styles */
+        @media (max-width: 767px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+                position: relative;
+            }
+
+            .logo-title {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 50px;
+                font-size: 1.8rem;
+            }
+
+            .title {
+                writing-mode: vertical-rl;
+                margin-top: 15px;
+                margin-bottom: 15px;
+                font-size: 2rem;
+            }
+
+            .description {
+                margin-top: 20px;
+                color: gray;
+                text-align: center;
+                font-size: 12px;
+                max-width: 300px;
+            }
+
+            .nav-desktop {
+                display: none;
+            }
+
+            /* Hamburger button styles */
+            #hamburgerBtn {
+                display: block;
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 1000;
+                width: 30px;
+                height: 30px;
+                background-color: transparent;
+                border: none;
+                /* Remove border */
+                border-radius: 5px;
+                /* Rounded corners */
+                cursor: pointer;
+                outline: none;
+                /* Remove focus outline */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Hamburger icon (three lines) */
+            #hamburgerBtn span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                background-color: #363333;
+                margin: 4px 0;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                /* Add transition for transforms and opacity */
+            }
+
+
+            /* Mobile menu styles */
+            .nav-mobile {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                /* Initially hidden off-screen */
+                width: 100%;
+                height: 40%;
+                /* background-color: gainsboro; */
+                /* White background */
+                color: gainsboro;
+                /* Gray text */
+                overflow-y: auto;
+                /* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); */
+                transition: left 0.3s ease;
+                /* Smooth slide-in effect */
+                z-index: 999;
+                /* Below the hamburger button */
+                padding-top: 60px;
+            }
+
+            .nav-mobile ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .nav-mobile li {
+                padding: 15px 20px;
+                /* border-bottom: 1px solid #ddd; */
+                /* Divider between menu items */
+            }
+
+            .nav-mobile a {
+                text-decoration: none;
+                color: #666;
+                /* Gray text */
+                font-size: 16px;
+            }
+
+            .nav-mobile a:hover {
+                color: #333;
+                /* Darker gray on hover */
+            }
+
+            .nav-mobile.open {
+                left: 0;
+                /* Slide the menu into view */
+            }
+
+            /* When the hamburger button is active (menu open) */
+            #hamburgerBtn.open span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            #hamburgerBtn.open span:nth-child(2) {
+                opacity: 0;
+            }
+
+            #hamburgerBtn.open span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+
+        }
+
+        /* Slideshow styles */
+        .slideshow-container {
+            width: 100vw;
+            /* max-width: 1200px; */
+            /* Optional: Limit the width of the slideshow */
+            height: 80vh;
+            /* Set height to 50% of the viewport height */
+            margin: 10px 20px;
+            /* Small margin around the slideshow */
+            overflow: hidden;
             display: flex;
-            justify-content: space-between;
-            padding: 20px;
-            align-items: flex-start;
+            justify-content: center;
+            align-items: center;
+            /* Center the image vertically and horizontally */
+        }
+
+        .slides {
             position: relative;
+            width: 100%;
+            height: 100%;
         }
 
-        .logo-title {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            width: auto;
-        }
-
-        .logo {
-            width: 60px;
-            height: 50px;
-        }
-
-        .title {
-            writing-mode: vertical-rl;
-            margin-top: 10px;
-            margin-left: 7px;
-            margin-bottom: 40px;
-            font-size: 38px;
-        }
-
-        /* Description in gray, below logo and title */
-        .description {
-            margin-top: 10px;
-            color: gray;
-            text-align: left;
-            max-width: 300px;
-            margin-left: 7px;
-            font-size: 14px;
-        }
-
-        /* Navigation on top right - horizontal */
-        .nav-desktop {
-            display: flex;
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             opacity: 0;
-            transform: translateY(-20px);
-            /* Start slightly above */
-            transition: opacity 0.5s ease, transform 0.5s ease;
-
+            /* Hidden by default */
+            transition: opacity 1s ease;
         }
 
-        .nav-desktop ul {
+        .slide.show {
+            opacity: 1;
+            /* Visible when 'show' class is applied */
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Adjust to cover or contain as needed */
+        }
+
+        /* Responsive styles for mobile */
+        @media (max-width: 768px) {
+            .nav-desktop {
+                display: none;
+                /* Ensure desktop navigation is hidden */
+            }
+
+            .hamburger {
+                display: block;
+                /* Ensure hamburger menu is visible */
+            }
+
+            header {
+                padding: 10px;
+            }
+
+            .logo {
+                width: 50px;
+                height: 40px;
+            }
+
+            .slideshow-container {
+                height: 40vh;
+                /* Reduce height for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slideshow-container {
+                height: 30vh;
+                /* Further reduce height for very small screens */
+            }
+        }
+
+        /* Container for vertical and horizontal text */
+        .content-container {
             display: flex;
-            list-style: none;
+            /* Align items horizontally */
+            justify-content: space-between;
+            /* Space between vertical and horizontal text */
+            align-items: flex-start;
+            /* Align items at the top */
+            gap: 20px;
+            /* Add spacing between the two sections */
+            padding: 20px;
         }
 
-        .nav-desktop li {
+        .vertical-text {
+            writing-mode: vertical-rl;
+            font-size: 32px;
+            font-weight: bold;
+            margin-left: auto;
+            margin-right: 20px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        /* Hide vertical text on mobile view */
+        @media (max-width: 768px) {
+            .vertical-text {
+                display: none;
+                /* Do not show vertical text on mobile */
+            }
+        }
+
+        .horizontal-text {
+            flex: 1;
+            /* Allow horizontal text to take up remaining space */
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: left;
+            margin-right: auto;
+            margin-top: 40px;
+            /* Align horizontal text to the left */
             margin-left: 20px;
         }
 
-        .nav-desktop a {
-            text-decoration: none;
-            color: black;
-        }
 
-        .nav-desktop.show {
-            opacity: 1;
-            transform: translateY(0);
-            /* Slide into place */
-        }
-
-        /* Hide mobile hamburger */
-        .hamburger {
-            display: none;
-        }
-
-        #mobileNav {
-            display: none;
-        }
-    }
-
-
-
-    /* Mobile styles */
-    @media (max-width: 767px) {
-        .nav-desktop {
-            display: none;
-            /* Ensure desktop navigation is hidden */
-        }
-
-        .hamburger {
-            display: block;
-            /* Ensure hamburger menu is visible */
-        }
-
-        header {
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            position: relative;
-        }
-
-        .logo-title {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .title {
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-            margin-top: 10px;
-        }
-
-        .description {
-            margin-top: 10px;
+        .footer {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 14px;
             color: gray;
             text-align: center;
         }
+    </style>
 
-        .nav-desktop {
-            display: none;
-        }
-
-        .hamburger {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: block;
-        }
-
-        /* Show hamburger only when scrolling down can be handled via JS */
-        #mobileNav {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 200px;
-            height: 100%;
-            background: #fff;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-            padding: 20px;
-            overflow-y: auto;
-            z-index: 999;
-        }
-
-        #mobileNav.show {
-            display: block;
-        }
-    }
-
-
-
-    /* Slideshow styles */
-    .slideshow-container {
-        width: 100vw;
-        /* max-width: 1200px; */
-        /* Optional: Limit the width of the slideshow */
-        height: 80vh;
-        /* Set height to 50% of the viewport height */
-        margin: 10px 20px;
-        /* Small margin around the slideshow */
-        overflow: hidden;
-        background-color: #000;
-        /* Optional: Add a background color for contrast */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        /* Center the image vertically and horizontally */
-    }
-
-    .slides {
-        position: relative;
-        width: 100%;
-        height: 100%;
-    }
-
-    .slide {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        /* Hidden by default */
-        transition: opacity 1s ease;
-    }
-
-    .slide.show {
-        opacity: 1;
-        /* Visible when 'show' class is applied */
-    }
-
-    .slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        /* Adjust to cover or contain as needed */
-    }
-
-    /* Responsive styles for mobile */
-    @media (max-width: 768px) {
-        header {
-            padding: 10px;
-        }
-
-        .logo {
-            width: 50px;
-            height: 40px;
-        }
-
-        .slideshow-container {
-            height: 40vh;
-            /* Reduce height for smaller screens */
-        }
-    }
-
-    @media (max-width: 480px) {
-        .slideshow-container {
-            height: 30vh;
-            /* Further reduce height for very small screens */
-        }
-    }
-</style>
+</head>
 
 
 <body>
     <header>
 
-        <h1 class="title" style="font-size: 24px;">[ 量子序化 ]</h1>
 
-        </div>
+
         <!-- Navigation for desktop -->
-        <nav class=" nav-desktop">
+        <nav class="nav-desktop" style="position: fixed;top: 0; right: 0; z-index: 1000;">
+
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="product.html">Product</a></li>
                 <li><a href="#content-container">Contact</a></li>
             </ul>
-            <a href="index.html" style="margin-left: 20px;">
-                <img src="images/transparent_logo.png" alt="Logo" style="height: 40px;">
+            <a href="index.html" style="margin-left: 15px; margin-top: -10px; display: inline-block;">
+                <img src="images/black_logo.png" alt="Logo" style="height: 30px;">
             </a>
         </nav>
         <!-- Hamburger for mobile -->
-        <div class="hamburger"><button id="hamburgerBtn">☰</button></div>
+        <!-- Hamburger Button -->
+        <button id="hamburgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
         <!-- Navigation for mobile -->
         <nav class="nav-mobile" id="mobileNav">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Product</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="product.html">Product</a></li>
+                <li><a href="#content-container">Contact</a></li>
             </ul>
 
         </nav>
     </header>
+
     <!-- Top descriptive section -->
     <section id="intro"
         style="align-items: flex-start;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 40px 20px;">
-        <!-- <h1 style="text-align: center; font-size: 32px; margin-top:20px;margin-bottom: 20px; color: #2c3e50;">About
-            量子序化所</h1> -->
+        <h1 style="text-align: center; font-size: 32px; margin-top:20px;margin-bottom: 20px; color: #38280a;">About
+            量子序化所</h1>
 
         <p style="align-items: flex-start;font-size: 1.2em; color: #555; margin-bottom: 20px; text-align: justify;">
             前言：每個物體皆由量子所構成，而量子本身具有波粒二象性，即同時具備粒子與波動的性質。這些量子以不斷振動的方式存在，其波動在自然狀態下可能是彼此雜亂無序的。量子序化所專注於提升物質的穩定性與純度。
@@ -286,15 +427,16 @@
         </p>
 
         <div style="
-                    margin: 20px auto; 
-                    padding: 20px 20px; 
-                    background-color: #f8f8f8; /* 柔和的背景色 */
-                    border-radius: 12px; 
-                    font-family: 'Noto Sans', 'Helvetica Neue', sans-serif;
-                    opacity: 0; /* 初始淡出 */
-                    animation: fadeIn 2s forwards;
-                    ">
-            <p style="font-size: 1.2em; line-height: 1.6; margin-bottom: 20px; text-align: left;">
+                margin: 20px auto; 
+                padding: 20px 20px; 
+                background-color: transparent;
+                border-radius: 12px; 
+                font-family: 'Noto Sans', 'Helvetica Neue', sans-serif;
+                opacity: 0; /* 初始淡出 */
+                animation: fadeIn 2s forwards;
+                ">
+            <p
+                style="font-size: 1.2em; line-height: 1.6; margin-bottom: 20px; text-align: left;border: 2px solid #ccc; padding: 15px; border-radius: 8px; ">
                 作法：本技術採用全球獨創之專利設備，透過精密控制程序，使物質在溫度下降的過程中逐漸精煉與穩定。當系統進入極低溫環境，並輔以1–3大氣壓的壓力控制，會開始以正弦波（sine
                 wave）模式對目標物質進行序化處理。這種序化方式能夠重新排列物質內部的分子與量子波動結構，促進其趨向同步穩定的狀態。
             </p>
@@ -326,22 +468,26 @@
             </div>
         </div>
     </section>
+    </header>
+
 
 
     <div class="content-container" id="content-container" style="border-top: 1px solid #ccc;">
         <!-- Contact Information -->
 
         <div class="horizontal-text">
-            <p style="font-size: 24px;"> Opening Hours: 10:00 a.m. - 6:00 p.m.</p>
-            <p style="font-size: 18px;"> TEL +886-318-0248</p>
-            <p style="font-size: 18px;"> MAIL cryox.tw@gmail.com</p>
-            <p style=" border-top: 20px ;max-width: 600px;"> Please feel free to email us if you
-                have any questions or interested to collaborate. </p>
+            <p style=" border-top: 20px ;max-width: 400px; color: gray;margin-bottom: 20px;"> Please feel free to
+                email us or call us during business hour if you have any questions or interested to collaborate.
+            </p>
+            <p> Opening Hours 10:00 a.m. - 6:00 p.m.</p>
+            <p> TEL 03-318-0248</p>
+            <p> MAIL cryox.tw@gmail.com</p>
+            <p> Address 330桃園市龜山區大湖路63號</p>
         </div>
 
         <div class="vertical-text">
             <p>量子序化所</p>
-            <p style="font-size: 18px; margin-top: 10px;">330 台灣桃園市龜山區大湖路63號</p>
+            <p style="font-size: 24px; margin-top: 10px;">CryoX </p>
         </div>
 
     </div>
@@ -352,103 +498,22 @@
         <footer class=" footer">
             <br> 養好身心，過好日子
             <br> © CryoX. All rights reserved.
-            </p>
         </footer>
     </div>
-    <style>
-        /* Container for vertical and horizontal text */
-        .content-container {
-            display: flex;
-            /* Align items horizontally */
-            justify-content: space-between;
-            /* Space between vertical and horizontal text */
-            align-items: flex-start;
-            /* Align items at the top */
-            gap: 20px;
-            /* Add spacing between the two sections */
-            padding: 20px;
-        }
-
-        .vertical-text {
-            writing-mode: vertical-rl;
-            font-size: 32px;
-            font-weight: bold;
-            margin-left: auto;
-            margin-right: 20px;
-            margin-top: 40px;
-
-
-        }
-
-        .vertical-text p {
-            margin-bottom: 20px;
-        }
-
-        .horizontal-text {
-            flex: 1;
-            /* Allow horizontal text to take up remaining space */
-            font-size: 16px;
-            line-height: 1.5;
-            text-align: left;
-            margin-right: auto;
-            margin-top: 40px;
-            /* Align horizontal text to the left */
-        }
-
-        .horizontal-text p {
-            margin-left: 20px;
-        }
-
-        .footer {
-            margin-top: 20px;
-            font-size: 14px;
-            color: gray;
-            text-align: center;
-        }
-
-        /* Mobile view adjustments */
-        @media (max-width: 768px) {
-            .content-container {
-                flex-direction: column;
-                /* Stack vertical and horizontal text vertically */
-                align-items: center;
-                /* Center align items */
-            }
-
-            .vertical-text {
-                writing-mode: horizontal-tb;
-                /* Change to horizontal text for better readability */
-                text-align: center;
-                margin-bottom: 20px;
-            }
-
-            .horizontal-text {
-                text-align: center;
-                /* Center align horizontal text */
-            }
-        }
-    </style>
 
 </body>
 
 <!--script-->
 <script>
-    // Toggle mobile menu
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileNav = document.getElementById('mobileNav');
+    const btn = document.getElementById('hamburgerBtn');
 
-    hamburgerBtn.addEventListener('click', () => {
-        mobileNav.classList.toggle('show');
+    btn.addEventListener('click', () => {
+        btn.classList.toggle('open');
+
+        // Also toggle the mobile menu
+        document.querySelector('.nav-mobile').classList.toggle('open');
     });
 
-    // Show hamburger button only when scrolling down
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            hamburgerBtn.style.display = 'block';
-        } else {
-            hamburgerBtn.style.display = 'none';
-        }
-    });
 
     // Show desktop navbar when the page loads
     window.addEventListener('load', () => {
@@ -457,7 +522,10 @@
             desktopNav.classList.add('show'); // Add the 'show' class to make it visible
         }
     });
-</script>
+
+    if (window.scrollY > 100 || window.innerWidth <= 767) { hamburgerBtn.style.display = 'block'; } else {
+        hamburgerBtn.style.display = 'none';
+    } </script>
 
 
 </html>
