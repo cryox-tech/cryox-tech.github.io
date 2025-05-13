@@ -147,6 +147,53 @@
 				cursor: pointer;
 			}
 
+			/* Hamburger button styles */
+			#hamburgerBtn {
+				display: block;
+				position: fixed;
+				top: 20px;
+				left: 20px;
+				z-index: 1000;
+				width: 40px;
+				height: 40px;
+				background-color: #333;
+				/* Dark background for the button */
+				border: none;
+				/* Remove border */
+				border-radius: 5px;
+				/* Rounded corners */
+				cursor: pointer;
+				outline: none;
+				/* Remove focus outline */
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			/* Hamburger icon (three lines) */
+			#hamburgerBtn span {
+				display: block;
+				width: 25px;
+				height: 3px;
+				background-color: #fff;
+				/* White lines */
+				margin: 4px 0;
+				/* Spacing between lines */
+				transition: background-color 0.3s ease;
+				/* Smooth hover effect */
+			}
+
+			/* Hover effect */
+			#hamburgerBtn:hover span {
+				background-color: #ff5722;
+				/* Change line color on hover */
+			}
+
+			/* Prevent blue color and underline */
+			#hamburgerBtn:focus {
+				outline: none;
+			}
+
 			/* Show hamburger only when scrolling down can be handled via JS */
 			#mobileNav {
 				display: none;
@@ -275,7 +322,13 @@
 			</a>
 		</nav>
 		<!-- Hamburger for mobile -->
-		<div class="hamburger"><button id="hamburgerBtn">☰</button></div>
+		<!-- Hamburger Button -->
+		<button id="hamburgerBtn">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+
 		<!-- Navigation for mobile -->
 		<nav class="nav-mobile" id="mobileNav">
 			<ul>
