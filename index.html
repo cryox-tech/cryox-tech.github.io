@@ -6,91 +6,108 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>CryoX</title>
 	<style>
-		/* Reset */
+		/* Basic Reset */
 		* {
 			box-sizing: border-box;
 			margin: 0;
 			padding: 0;
 		}
 
-		body {
-			/* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
-			/* background-color: #fafafa; */
-			color: #333;
-			line-height: 1.6;
+		/* Desktop Styles */
+		@media(min-width: 768px) {
+			.navbar {
+				display: flex;
+				justify-content: flex-end;
+				align-items: flex-start;
+				padding: 10px 20px;
+				position: relative;
+			}
+
+			/* Logo + Title on Top Left (vertical) */
+			.logo-title.desktop {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				position: absolute;
+				top: 10px;
+				left: 20px;
+			}
+
+			/* Hide mobile menu toggle on desktop */
+			.menu-toggle.mobile {
+				display: none;
+			}
+
+			/* Show nav items on desktop */
+			.nav-items {
+				display: flex;
+				gap: 20px;
+			}
+
+			/* Nav items list styles */
+			.nav-items ul {
+				display: flex;
+				list-style: none;
+			}
 		}
 
-		/* Header & Navigation */
-		header {
-			padding: 20px;
-			/* background: #fff; */
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			/* border-bottom: 1px solid #eee; */
-		}
+		/* Mobile Styles */
+		@media(max-width: 767px) {
+			.navbar {
+				display: flex;
+				flex-direction: column;
+				align-items: stretch;
+				height: 100vh;
+				justify-content: flex-start;
+				padding: 10px;
+			}
 
-		/* Logo */
-		h1 {
-			font-size: 1.8em;
-			font-weight: normal;
-		}
+			/* Hamburger menu on left */
+			.menu-toggle.mobile {
+				align-self: flex-start;
+				margin-bottom: 10px;
+			}
 
-		/* Navigation */
-		nav ul {
-			display: flex;
-			list-style: none;
-		}
+			/* Logo + Title centered vertically, stacked */
+			.logo-title.mobile {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 150px;
+				/* Or any height for center alignment */
+			}
 
-		nav li {
-			margin-left: 20px;
-		}
+			/* Show/hide nav items based on toggle state (JavaScript needed) */
+			.nav-items {
+				display: none;
+				/* Hidden by default */
+			}
 
-		nav a {
-			text-decoration: none;
-			color: #555;
-			font-weight: 500;
-			padding: 8px 12px;
-			border-radius: 4px;
-			transition: background 0.2s, color 0.2s;
-		}
+			.nav-items.show {
+				display: block;
+			}
 
-		nav a:hover {
-			/* background-color: #f0f0f0; */
-			color: #0077aa;
-		}
+			/* Make nav fill the entire page when expanded */
+			.nav-items {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: calc(100% - 150px);
+				/* Adjust based on logo/title height */
+				background-color: #fff;
+				/* Or your background */
+				padding: 20px;
+				box-sizing: border-box;
+			}
 
-		/* 初始狀態，讓導航隱藏 */
-		.navbar {
-			opacity: 0;
-			transform: translateY(-20px);
-			/* 可加入滑動效果看起來更動感 */
-			transition: opacity 1s ease, transform 1s ease;
-		}
-
-		/* 當頁面載入後生效，新增class或使用JavaScript觸發 */
-		.navbar.show {
-			opacity: 1;
-			transform: translateY(0);
-		}
-
-
-		/* Top descriptive section */
-		#intro {
-			padding: 40px 20px;
-			max-width: 800px;
-			margin: auto;
-			text-align: center;
-		}
-
-		#intro h1 {
-			font-size: 2em;
-			margin-bottom: 10px;
-		}
-
-		#intro p {
-			font-size: 1.2em;
-			color: #555;
+			/* Additional styling for items inside mobile menu if needed */
+			.nav-items ul {
+				list-style: none;
+				flex-direction: column;
+				gap: 20px;
+			}
 		}
 
 		/* Slideshow styles */
