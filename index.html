@@ -433,9 +433,9 @@
 		mobileNav.classList.toggle('show');
 	});
 
-	// Show hamburger button only when scrolling down
+	// Show hamburger button only when scrolling both down and up
 	window.addEventListener('scroll', () => {
-		if (window.scrollY > 100) {
+		if (window.scrollY > 100 || window.innerWidth <= 767) {
 			hamburgerBtn.style.display = 'block';
 		} else {
 			hamburgerBtn.style.display = 'none';
