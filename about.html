@@ -453,6 +453,53 @@
                     opacity: 1;
                 }
             }
+
+            /* Default styles for desktop view */
+            .about-section {
+                display: flex;
+                flex-wrap: wrap;
+                /* Allow images and text to wrap */
+                justify-content: space-between;
+                gap: 20px;
+            }
+
+            .about-section img {
+                width: 48%;
+                /* Show multiple images side by side for desktop */
+                height: auto;
+                border-radius: 8px;
+                /* Add rounded corners */
+            }
+
+            .about-section p {
+                font-size: 1.2em;
+                /* Default font size for desktop */
+                line-height: 1.6;
+            }
+
+            /* Mobile-specific styles */
+            @media (max-width: 768px) {
+                .about-section {
+                    flex-direction: column;
+                    /* Stack images and text vertically */
+                    align-items: center;
+                    /* Center-align content */
+                }
+
+                .about-section img {
+                    width: 100%;
+                    /* Show one image at a time */
+                    margin-bottom: 20px;
+                    /* Add spacing between images */
+                }
+
+                .about-section p {
+                    font-size: 1em;
+                    /* Smaller font size for mobile */
+                    text-align: justify;
+                    /* Justify text for better readability */
+                }
+            }
         </style>
 
         <div style="display: flex; height: 100vh; width: 100%;">
