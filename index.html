@@ -143,9 +143,9 @@
 				top: 20px;
 				left: 20px;
 				z-index: 1000;
-				width: 40px;
-				height: 40px;
-				background-color: gainsboro;
+				width: 30px;
+				height: 30px;
+				background-color: transparent;
 				border: none;
 				/* Remove border */
 				border-radius: 5px;
@@ -163,8 +163,7 @@
 				display: block;
 				width: 25px;
 				height: 3px;
-				background-color: #000;
-				/* or your preferred color */
+				background-color: #363333;
 				margin: 4px 0;
 				transition: transform 0.3s ease, opacity 0.3s ease;
 				/* Add transition for transforms and opacity */
@@ -181,7 +180,7 @@
 				height: 40%;
 				background-color: gainsboro;
 				/* White background */
-				color: #666;
+				color: gainsboro;
 				/* Gray text */
 				overflow-y: auto;
 				/* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); */
@@ -401,10 +400,10 @@
 		<div class="horizontal-text">
 			<p style=" border-top: 20px ;max-width: 400px; color: gray;margin-bottom: 20px;"> Please feel free to email
 				us or call us during business hour if you have any questions or interested to collaborate. </p>
-			<p style="font-size: 18px;"> Opening Hours 10:00 a.m. - 6:00 p.m.</p>
-			<p style="font-size: 18px;"> TEL +886-318-0248</p>
-			<p style="font-size: 18px;"> MAIL cryox.tw@gmail.com</p>
-			<p style="font-size: 18px; "> Address 330桃園市龜山區大湖路63號</p>
+			<p> Opening Hours 10:00 a.m. - 6:00 p.m.</p>
+			<p> TEL 03-318-0248</p>
+			<p> MAIL cryox.tw@gmail.com</p>
+			<p> Address 330桃園市龜山區大湖路63號</p>
 		</div>
 
 		<div class="vertical-text">
@@ -444,13 +443,10 @@
 			margin-left: auto;
 			margin-right: 20px;
 			margin-top: 40px;
-
-
-		}
-
-		.vertical-text p {
 			margin-bottom: 20px;
 		}
+
+
 
 		.horizontal-text {
 			flex: 1;
@@ -461,14 +457,24 @@
 			margin-right: auto;
 			margin-top: 40px;
 			/* Align horizontal text to the left */
-		}
-
-		.horizontal-text p {
 			margin-left: 20px;
 		}
 
+		@media (max-width: 768px) {
+			#content-container {
+				font-size: 14px;
+				/* Smaller font size for mobile */
+				line-height: 1.4;
+				/* Adjust line height for smaller screens */
+				padding: 12px;
+				/* Reduce padding for mobile */
+			}
+		}
+
+
 		.footer {
 			margin-top: 20px;
+			margin-bottom: 20px;
 			font-size: 14px;
 			color: gray;
 			text-align: center;
