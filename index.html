@@ -161,13 +161,13 @@
 				display: block;
 				width: 25px;
 				height: 3px;
-				background-color: transparent;
-				/* White lines */
+				background-color: #000;
+				/* or your preferred color */
 				margin: 4px 0;
-				/* Spacing between lines */
-				transition: background-color 0.3s ease;
-				/* Smooth hover effect */
+				transition: transform 0.3s ease, opacity 0.3s ease;
+				/* Add transition for transforms and opacity */
 			}
+
 
 			/* Mobile menu styles */
 			.nav-mobile {
@@ -218,6 +218,20 @@
 				left: 0;
 				/* Slide the menu into view */
 			}
+
+			/* When the hamburger button is active (menu open) */
+			#hamburgerBtn.open span:nth-child(1) {
+				transform: rotate(45deg) translate(5px, 5px);
+			}
+
+			#hamburgerBtn.open span:nth-child(2) {
+				opacity: 0;
+			}
+
+			#hamburgerBtn.open span:nth-child(3) {
+				transform: rotate(-45deg) translate(7px, -7px);
+			}
+
 		}
 
 		/* Slideshow styles */
@@ -483,14 +497,13 @@
 
 <!--script-->
 <script>
-	// Toggle mobile menu
+	const btn = document.getElementById('hamburgerBtn');
 
-	const hamburgerBtn = document.getElementById('hamburgerBtn');
-	const mobileNav = document.getElementById('mobileNav');
+	btn.addEventListener('click', () => {
+		btn.classList.toggle('open');
 
-	hamburgerBtn.addEventListener('click', () => {
-		// Toggle the 'open' class on the mobile menu
-		mobileNav.classList.toggle('open');
+		// Also toggle the mobile menu
+		document.querySelector('.nav-mobile').classList.toggle('open');
 	});
 
 
