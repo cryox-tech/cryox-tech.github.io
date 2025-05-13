@@ -99,8 +99,6 @@
 			}
 		}
 
-
-
 		/* Mobile styles */
 		@media (max-width: 767px) {
 			header {
@@ -114,9 +112,8 @@
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				width: 120px;
-				margin-bottom: 20px;
-				margin-top: 40px;
+				justify-content: center;
+				padding: 10px;
 			}
 
 			.title {
@@ -135,16 +132,6 @@
 
 			.nav-desktop {
 				display: none;
-			}
-
-			.hamburger {
-				position: fixed;
-				top: 20px;
-				left: 20px;
-				display: block;
-				z-index: 1000;
-				/* Ensure it stays above other elements */
-				cursor: pointer;
 			}
 
 			/* Hamburger button styles */
@@ -183,37 +170,28 @@
 				/* Smooth hover effect */
 			}
 
-			/* Hover effect */
-			#hamburgerBtn:hover span {
-				background-color: #ff5722;
-				/* Change line color on hover */
-			}
-
-			/* Prevent blue color and underline */
-			#hamburgerBtn:focus {
-				outline: none;
-			}
-
-			/* Show hamburger only when scrolling down can be handled via JS */
-			#mobileNav {
-				display: none;
+			/* Mobile menu styles */
+			.nav-mobile {
 				position: fixed;
 				top: 0;
-				left: 0;
-				width: 200px;
+				left: -250px;
+				/* Initially hidden off-screen */
+				width: 250px;
 				height: 100%;
-				box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-				padding: 20px;
+				background-color: #333;
+				color: #fff;
 				overflow-y: auto;
-				z-index: 999;
+				transition: transform 0.3s ease;
+				/* Smooth slide-in effect */
 			}
 
-			#mobileNav.show {
-				display: block;
+			.nav-mobile.open {
+				transform: translateX(250px);
+				/* Slide the menu into view */
 			}
+
+
 		}
-
-
 
 		/* Slideshow styles */
 		.slideshow-container {
@@ -479,21 +457,15 @@
 <!--script-->
 <script>
 	// Toggle mobile menu
+
 	const hamburgerBtn = document.getElementById('hamburgerBtn');
 	const mobileNav = document.getElementById('mobileNav');
 
 	hamburgerBtn.addEventListener('click', () => {
-		mobileNav.classList.toggle('show');
+		// Toggle the 'open' class on the mobile menu
+		mobileNav.classList.toggle('open');
 	});
 
-	// Show hamburger button only when scrolling both down and up
-	window.addEventListener('scroll', () => {
-		if (window.scrollY > 100 || window.innerWidth <= 767) {
-			hamburgerBtn.style.display = 'block';
-		} else {
-			hamburgerBtn.style.display = 'none';
-		}
-	});
 
 	// Show desktop navbar when the page loads
 	window.addEventListener('load', () => {
@@ -503,13 +475,9 @@
 		}
 	});
 
-	if (window.scrollY > 100 || window.innerWidth <= 767) {
-		hamburgerBtn.style.display = 'block';
-	} else {
+	if (window.scrollY > 100 || window.innerWidth <= 767) { hamburgerBtn.style.display = 'block'; } else {
 		hamburgerBtn.style.display = 'none';
-	}
-
-</script>
+	} </script>
 
 
 </html>
