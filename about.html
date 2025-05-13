@@ -369,6 +369,70 @@
             color: gray;
             text-align: center;
         }
+
+
+        /* Default styles for desktop view */
+        #intro {
+            align-items: flex-start;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        #intro h1 {
+            text-align: center;
+            font-size: 32px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            color: #38280a;
+        }
+
+        #intro p {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        #intro .framed-text {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: left;
+            border: 2px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            #intro {
+                padding: 20px 10px;
+                /* Reduce padding for smaller screens */
+            }
+
+            #intro h1 {
+                font-size: 24px;
+                /* Smaller font size for mobile */
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
+
+            #intro p {
+                font-size: 1em;
+                /* Smaller font size for paragraphs */
+            }
+
+            #intro .framed-text {
+                font-size: 1em;
+                /* Smaller font size for framed text */
+                padding: 10px;
+                /* Reduce padding for framed text */
+            }
+        }
     </style>
 
 </head>
@@ -501,18 +565,12 @@
                 }
             }
         </style>
+        <div class="about-section">
+            <img src="images/太極爐.jpeg" alt="About Image 1" />
+            <img src="images/about2.jpg" alt="About Image 2" />
+            <p style="text-align: justify;">
+                量子序化所的技術不僅限於物質的穩定性提升，還能促進人體與宇宙之間的共振。這種共振不僅有助於提升物質的純度，還能促進人體的健康與平衡。透過這種技術，我們希望能夠幫助人們更好地理解和利用宇宙的智慧。</p>
 
-        <div style="display: flex; height: 100vh; width: 100%;">
-            <!-- Image 1 container -->
-            <div style="flex: 1; display: flex; justify-content: center; align-items: center; background: #f0f0f0;">
-                <img src="images/太極爐.jpeg" alt="熵減太極爐"
-                    style="width: 100%; height: 100%; max-width: 100%; max-height: 100%; object-fit: contain;">
-            </div>
-            <!-- Image 2 container -->
-            <div style="flex: 1; display: flex; justify-content: center; align-items: center; background: #f0f0f0;">
-                <img src="images/image2.jpg" alt="Image 2"
-                    style="width: 100%; height: 100%; max-width: 100%; max-height: 100%; object-fit: contain;">
-            </div>
         </div>
     </section>
     </header>
@@ -544,7 +602,7 @@
 
         <footer class=" footer">
             <br> 養好身心，過好日子
-            <br> © CryoX. All rights reserved.
+            <br> © CryoX. 版權所有。All rights reserved.
         </footer>
     </div>
 
