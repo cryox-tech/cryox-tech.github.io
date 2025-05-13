@@ -1,179 +1,271 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CryoX</title>
-    <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-        }
 
-        /* Header & Navigation */
+<!--styles-->
+<style>
+    /* styles.css */
+    /* Basic Reset */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+
+
+    }
+
+    /* Desktop styles */
+    @media (min-width: 768px) {
         header {
-            padding: 20px;
-            /* background: #fff; */
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            /* border-bottom: 1px solid #eee; */
+            padding: 20px;
+            align-items: flex-start;
+            position: relative;
         }
 
-        /* Logo */
-        h1 {
-            font-size: 1.8em;
-            font-weight: normal;
+        .logo-title {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: auto;
         }
 
-        /* Navigation */
-        nav ul {
+        .logo {
+            width: 60px;
+            height: 50px;
+        }
+
+        .title {
+            writing-mode: vertical-rl;
+            margin-top: 10px;
+            margin-left: 7px;
+            margin-bottom: 40px;
+            font-size: 38px;
+        }
+
+        /* Description in gray, below logo and title */
+        .description {
+            margin-top: 10px;
+            color: gray;
+            text-align: left;
+            max-width: 300px;
+            margin-left: 7px;
+            font-size: 14px;
+        }
+
+        /* Navigation on top right - horizontal */
+        .nav-desktop {
+            display: flex;
+            opacity: 0;
+            transform: translateY(-20px);
+            /* Start slightly above */
+            transition: opacity 0.5s ease, transform 0.5s ease;
+
+        }
+
+        .nav-desktop ul {
             display: flex;
             list-style: none;
         }
 
-        nav li {
+        .nav-desktop li {
             margin-left: 20px;
         }
 
-        nav a {
+        .nav-desktop a {
             text-decoration: none;
-            color: #555;
-            font-weight: 500;
-            padding: 8px 12px;
-            border-radius: 4px;
-            transition: background 0.2s, color 0.2s;
+            color: black;
         }
 
-        nav a:hover {
-            /* background-color: #f0f0f0; */
-            color: #0077aa;
-        }
-
-        /* 初始狀態，讓導航隱藏 */
-        .navbar {
-            opacity: 0;
-            transform: translateY(-20px);
-            /* 可加入滑動效果看起來更動感 */
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        /* 當頁面載入後生效，新增class或使用JavaScript觸發 */
-        .navbar.show {
+        .nav-desktop.show {
             opacity: 1;
             transform: translateY(0);
+            /* Slide into place */
         }
 
-
-        /* Top descriptive section */
-        #intro {
-            padding: 40px 20px;
-            max-width: 800px;
-            margin: auto;
-            text-align: center;
+        /* Hide mobile hamburger */
+        .hamburger {
+            display: none;
         }
 
-        #intro h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
+        #mobileNav {
+            display: none;
         }
+    }
 
-        #intro p {
-            font-size: 1.2em;
-            color: #555;
-        }
 
-        /* Slideshow styles */
-        .slideshow-container {
+
+    /* Mobile styles */
+    @media (max-width: 767px) {
+        header {
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
             position: relative;
-            width: 100%;
-            /* max-width: 1000px; */
-            height: 600px;
-            /* margin: 40px auto; */
-            overflow: hidden;
-            border-radius: 8px;
-            margin-bottom: 100px;
         }
 
-        .slides {
-            position: relative;
-            width: 100%;
-            height: 100%;
+        .logo-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-
-        .slide.show {
-            opacity: 1;
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .title {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            margin-top: 10px;
         }
 
         .description {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: rgba(0, 0, 0, 0.3);
-            /* color: #fff; */
-            padding: 10px;
-            font-size: 1em;
+            margin-top: 10px;
+            color: gray;
             text-align: center;
         }
 
-        /* Footer at the end of the page, do not fix it */
-        footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
+        .nav-desktop {
+            display: none;
         }
-    </style>
-</head>
+
+        .hamburger {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: block;
+        }
+
+        /* Show hamburger only when scrolling down can be handled via JS */
+        #mobileNav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100%;
+            background: #fff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 999;
+        }
+
+        #mobileNav.show {
+            display: block;
+        }
+    }
+
+
+
+    /* Slideshow styles */
+    .slideshow-container {
+        width: 100vw;
+        /* max-width: 1200px; */
+        /* Optional: Limit the width of the slideshow */
+        height: 80vh;
+        /* Set height to 50% of the viewport height */
+        margin: 10px 20px;
+        /* Small margin around the slideshow */
+        overflow: hidden;
+        background-color: #000;
+        /* Optional: Add a background color for contrast */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* Center the image vertically and horizontally */
+    }
+
+    .slides {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        /* Hidden by default */
+        transition: opacity 1s ease;
+    }
+
+    .slide.show {
+        opacity: 1;
+        /* Visible when 'show' class is applied */
+    }
+
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* Adjust to cover or contain as needed */
+    }
+
+    /* Responsive styles for mobile */
+    @media (max-width: 768px) {
+        header {
+            padding: 10px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 40px;
+        }
+
+        .slideshow-container {
+            height: 40vh;
+            /* Reduce height for smaller screens */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .slideshow-container {
+            height: 30vh;
+            /* Further reduce height for very small screens */
+        }
+    }
+</style>
+
 
 <body>
-    <!-- Navigation Header -->
     <header>
-        <!-- <h1><a href="#" style="text-decoration:none; color:#222;">CryoX</a></h1> -->
 
-        <nav class="navbar" style="position: fixed; top: 0; width: 100%; background-color: transparent; z-index: 1000;">
-            <div style="display: flex; justify-content: flex-end; align-items: center; padding: 10px 20px;">
-                <ul style="margin: 0; padding: 0; list-style: none; display: flex; gap: 20px;">
-                    <li><a href="index.html" style="text-decoration: none; color: #000;">Home</a></li>
-                    <li><a href="about.html" style="text-decoration: none; color: #000;">About</a></li>
-                    <li><a href="product.html" style="text-decoration: none; color: #000;">Product</a></li>
-                    <li><a href="#footer-contact" style="text-decoration: none; color: #000;">Contact</a></li>
-                </ul>
-                <a href="index.html" style="margin-left: 20px;">
-                    <img src="images/transparent_logo.png" alt="Logo" style="height: 40px;">
-                </a>
-            </div>
+        <h1 class="title" style="font-size: 24px;">[ 量子序化 ]</h1>
+
+        </div>
+        <!-- Navigation for desktop -->
+        <nav class=" nav-desktop">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="product.html">Product</a></li>
+                <li><a href="#content-container">Contact</a></li>
+            </ul>
+            <a href="index.html" style="margin-left: 20px;">
+                <img src="images/transparent_logo.png" alt="Logo" style="height: 40px;">
+            </a>
         </nav>
+        <!-- Hamburger for mobile -->
+        <div class="hamburger"><button id="hamburgerBtn">☰</button></div>
+        <!-- Navigation for mobile -->
+        <nav class="nav-mobile" id="mobileNav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
 
-
+        </nav>
     </header>
-
     <!-- Top descriptive section -->
     <section id="intro"
         style="align-items: flex-start;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 40px 20px;">
-        <h1 style="text-align: center; font-size: 32px; margin-top:20px;margin-bottom: 20px; color: #2c3e50;">About
-            量子序化所</h1>
+        <!-- <h1 style="text-align: center; font-size: 32px; margin-top:20px;margin-bottom: 20px; color: #2c3e50;">About
+            量子序化所</h1> -->
 
         <p style="align-items: flex-start;font-size: 1.2em; color: #555; margin-bottom: 20px; text-align: justify;">
             前言：每個物體皆由量子所構成，而量子本身具有波粒二象性，即同時具備粒子與波動的性質。這些量子以不斷振動的方式存在，其波動在自然狀態下可能是彼此雜亂無序的。量子序化所專注於提升物質的穩定性與純度。
@@ -188,9 +280,7 @@
                     padding: 20px 20px; 
                     background-color: #f8f8f8; /* 柔和的背景色 */
                     border-radius: 12px; 
-                    box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
                     font-family: 'Noto Sans', 'Helvetica Neue', sans-serif;
-                    color: #555;
                     opacity: 0; /* 初始淡出 */
                     animation: fadeIn 2s forwards;
                     ">
@@ -225,52 +315,139 @@
                     style="width: 100%; height: 100%; max-width: 100%; max-height: 100%; object-fit: contain;">
             </div>
         </div>
-
-
-
-
     </section>
 
-    <!-- Footer -->
 
+    <div class="content-container" id="content-container" style="border-top: 1px solid #ccc;">
+        <!-- Contact Information -->
 
-    <!-- Footer -->
-
-    <footer id="footer-contact"
-        style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #ccc; margin-left: 40px; margin-right: 40px;">
-        <div style="flex: 1;">
-            <p style="border-bottom: 80px;"> Opening Hours 10:00 a.m. - 6:00 p.m. </p>
-
-            <p style="border-top: 20px ;max-width: 600px;">Please feel free to email us if you
+        <div class="horizontal-text">
+            <p style="font-size: 24px;"> Opening Hours: 10:00 a.m. - 6:00 p.m.</p>
+            <p style="font-size: 18px;"> TEL +886-318-0248</p>
+            <p style="font-size: 18px;"> MAIL cryox.tw@gmail.com</p>
+            <p style=" border-top: 20px ;max-width: 600px;"> Please feel free to email us if you
                 have any questions or interested to collaborate. </p>
-            <br> TEL +886-318-0248
-            <br> MAIL cryox.tw@gmail.com
-            <br> © CryoX. All rights reserved.
-            </p>
         </div>
 
-        <!-- 右側：縱向文字 -->
-        <div style="writing-mode: vertical-rl;  margin-left: auto; font-size: 32px;
-    font-weight: bold; margin-bottom: 80px; margin-right: 40px;">
-            <p style="margin-bottom: 20px;">量子序化所 CryoX</p>
-            <p style="margin-bottom: 20px;font-size: 16px;margin-right: 10px; margin-top: 15px;">
-                桃園市龜山區大湖路63號</p>
-
-
-
-
-
+        <div class="vertical-text">
+            <p>量子序化所</p>
+            <p style="font-size: 18px; margin-top: 10px;">330 台灣桃園市龜山區大湖路63號</p>
         </div>
-    </footer>
+
     </div>
 
-    <script>
-        window.addEventListener('load', () => {
-            document.querySelector('.navbar').classList.add('show');
-        });
-    </script>
+    <!-- Footer -->
+    <div>
 
+        <footer class=" footer">
+            <br> 養好身心，過好日子
+            <br> © CryoX. All rights reserved.
+            </p>
+        </footer>
+    </div>
+    <style>
+        /* Container for vertical and horizontal text */
+        .content-container {
+            display: flex;
+            /* Align items horizontally */
+            justify-content: space-between;
+            /* Space between vertical and horizontal text */
+            align-items: flex-start;
+            /* Align items at the top */
+            gap: 20px;
+            /* Add spacing between the two sections */
+            padding: 20px;
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            font-size: 32px;
+            font-weight: bold;
+            margin-left: auto;
+            margin-right: 20px;
+            margin-top: 40px;
+
+
+        }
+
+        .vertical-text p {
+            margin-bottom: 20px;
+        }
+
+        .horizontal-text {
+            flex: 1;
+            /* Allow horizontal text to take up remaining space */
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: left;
+            margin-right: auto;
+            margin-top: 40px;
+            /* Align horizontal text to the left */
+        }
+
+        .horizontal-text p {
+            margin-left: 20px;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: gray;
+            text-align: center;
+        }
+
+        /* Mobile view adjustments */
+        @media (max-width: 768px) {
+            .content-container {
+                flex-direction: column;
+                /* Stack vertical and horizontal text vertically */
+                align-items: center;
+                /* Center align items */
+            }
+
+            .vertical-text {
+                writing-mode: horizontal-tb;
+                /* Change to horizontal text for better readability */
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .horizontal-text {
+                text-align: center;
+                /* Center align horizontal text */
+            }
+        }
+    </style>
 
 </body>
+
+<!--script-->
+<script>
+    // Toggle mobile menu
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    hamburgerBtn.addEventListener('click', () => {
+        mobileNav.classList.toggle('show');
+    });
+
+    // Show hamburger button only when scrolling down
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            hamburgerBtn.style.display = 'block';
+        } else {
+            hamburgerBtn.style.display = 'none';
+        }
+    });
+
+    // Show desktop navbar when the page loads
+    window.addEventListener('load', () => {
+        const desktopNav = document.querySelector('.nav-desktop'); // Select the desktop navbar
+        if (desktopNav) {
+            desktopNav.classList.add('show'); // Add the 'show' class to make it visible
+        }
+    });
+</script>
+
 
 </html>
