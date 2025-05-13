@@ -443,6 +443,13 @@
 			desktopNav.classList.add('show'); // Add the 'show' class to make it visible
 		}
 	});
+
+	if (window.scrollY > 100 || window.innerWidth <= 767) {
+		hamburgerBtn.style.display = 'block';
+	} else {
+		hamburgerBtn.style.display = 'none';
+	}
+
 </script>
 
 
