@@ -344,6 +344,8 @@
             font-size: 24px;
             font-weight: bold;
             color: #6e6d6d;
+            writing-mode: vertical-rl;
+            /* Make text vertical */
         }
 
         .slideshow-container {
@@ -418,6 +420,8 @@
             }
 
             .slideshow-title {
+                writing-mode: horizontal-tb;
+                /* Make text horizontal for mobile */
                 text-align: center;
                 margin: 0 0 20px 0;
                 font-size: 20px;
@@ -607,7 +611,7 @@
         </style>
         <div class="slideshow-section" style="margin-top: 50px;">
             <div class="slideshow-title">
-                <h2 style="writing-mode: vertical-lr;"> [ 量子序化應用領域 ]</h2>
+                <h2 style="margin-right: 150px;"> [ 量子序化應用領域 ]</h2>
             </div>
             <div class="slideshow-container">
                 <div class="slide">
@@ -727,7 +731,7 @@
     // Optional: Auto-play the slideshow
     setInterval(() => {
         changeSlide(1);
-    }, 5000); // Change slide every 5 seconds
+    }, 10000); // Change slide every 5 seconds
 
 </script>
 
