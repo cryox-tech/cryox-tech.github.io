@@ -245,7 +245,7 @@
             /* Align items horizontally */
             justify-content: space-between;
             /* Space between vertical and horizontal text */
-            align-items: first baseline;
+            align-items: flex-start;
             /* Align items of the page */
             gap: 20px;
             /* Add spacing between the two sections */
@@ -295,8 +295,8 @@
 
         /* Default styles for desktop view */
         #intro {
-            align-items: flex-start;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            /* align-items: flex-start; */
+            /* font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; */
             color: #333;
             line-height: 1.6;
             max-width: 900px;
@@ -487,8 +487,6 @@
 <body>
     <header>
 
-
-
         <!-- Navigation for desktop -->
         <nav class="nav-desktop" style="position: fixed;top: 0; right: 0; z-index: 1000;">
 
@@ -523,8 +521,7 @@
     </header>
 
     <!-- Top descriptive section -->
-    <section id="intro"
-        style="align-items: flex-start;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 40px 20px;">
+    <section id="intro">
         <h1 style="text-align: center; font-size: 32px; margin-top:40px;margin-bottom: 60px; color: #38280a;">About
             量子序化所</h1>
 
@@ -548,8 +545,6 @@
                 wave）模式對目標物質進行序化處理。這種序化方式能夠重新排列物質內部的分子結構，促進其趨向同步穩定的狀態。
             </p>
         </div>
-
-
 
         <!-- 淡入效果動畫 -->
         <style>
@@ -610,7 +605,7 @@
                 }
             }
         </style>
-        <section class="slideshow-section" style="margin-top: 50px;">
+        <div class="slideshow-section" style="margin-top: 50px;">
             <div class="slideshow-title">
                 <h2 style="writing-mode: vertical-lr;"> [ 量子序化應用領域 ]</h2>
             </div>
@@ -647,39 +642,38 @@
                 <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
                 <a class="next" onclick="changeSlide(1)">&#10095;</a>
             </div>
-        </section>
+        </div>
+    </section>
 
 
-        <div class="content-container" id="content-container" style="border-top: 1px solid #ccc;">
-            <!-- Contact Information -->
-
-            <div class="horizontal-text">
-                <p style=" border-top: 20px ;max-width: 400px; color: gray;margin-bottom: 20px;"> Please feel free
-                    to
-                    email us or call us during business hour if you have any questions or interested to collaborate.
-                </p>
-                <p> Opening Hours 10:00 a.m. - 6:00 p.m.</p>
-                <p> TEL 03-318-0248</p>
-                <p> MAIL cryox.tw@gmail.com</p>
-                <p> Address 330桃園市龜山區大湖路63號</p>
-            </div>
-
-            <div class="vertical-text">
-                <p>量子序化所</p>
-                <p style="font-size: 24px; margin-top: 10px;">CryoX </p>
-            </div>
-
+    <div class="content-container" id="content-container" style="border-top: 1px solid #ccc;">
+        <div class="horizontal-text">
+            <p style=" border-top: 20px ;max-width: 400px; color: gray;margin-bottom: 20px;"> Please feel free
+                to
+                email us or call us during business hour if you have any questions or interested to collaborate.
+            </p>
+            <p> Opening Hours 10:00 a.m. - 6:00 p.m.</p>
+            <p> TEL 03-318-0248</p>
+            <p> MAIL cryox.tw@gmail.com</p>
+            <p> Address 330桃園市龜山區大湖路63號</p>
         </div>
 
-
-        <!-- Footer -->
-        <div>
-
-            <footer class=" footer">
-                <br> 養好身心，過好日子
-                <br> © CryoX. 版權所有。All rights reserved.
-            </footer>
+        <div class="vertical-text">
+            <p>量子序化所</p>
+            <p style="font-size: 24px; margin-top: 10px;">CryoX </p>
         </div>
+
+    </div>
+
+
+
+    <!-- Footer -->
+    <div>
+        <footer class=" footer">
+            <br> 養好身心，過好日子
+            <br> © CryoX. All rights reserved.
+        </footer>
+    </div>
 
 </body>
 
