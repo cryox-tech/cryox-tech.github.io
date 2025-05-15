@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> ☯︎ 量子序化所</title>
-
+    <title>量子序化</title>
+    <link rel="icon" href="images/black_logo.png" type="image/png" />
 
     <style>
         /* styles.css */
@@ -15,8 +15,8 @@
             margin: 0;
             padding: 0;
             background-color: #f0ece3ed;
-
-
+            font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', 'Heiti TC', 'Arial', sans-serif;
+            ;
         }
 
         /* Desktop styles */
@@ -239,96 +239,18 @@
 
         }
 
-        /* Slideshow styles */
-        .slideshow-container {
-            width: 100vw;
-            /* max-width: 1200px; */
-            /* Optional: Limit the width of the slideshow */
-            height: 80vh;
-            /* Set height to 50% of the viewport height */
-            margin: 10px 20px;
-            /* Small margin around the slideshow */
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* Center the image vertically and horizontally */
-        }
-
-        .slides {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            /* Hidden by default */
-            transition: opacity 1s ease;
-        }
-
-        .slide.show {
-            opacity: 1;
-            /* Visible when 'show' class is applied */
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* Adjust to cover or contain as needed */
-        }
-
-        /* Responsive styles for mobile */
-        @media (max-width: 768px) {
-            .nav-desktop {
-                display: none;
-                /* Ensure desktop navigation is hidden */
-            }
-
-            .hamburger {
-                display: block;
-                /* Ensure hamburger menu is visible */
-            }
-
-            header {
-                padding: 10px;
-            }
-
-            .logo {
-                width: 50px;
-                height: 40px;
-            }
-
-            .slideshow-container {
-                height: 40vh;
-                /* Reduce height for smaller screens */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .slideshow-container {
-                height: 30vh;
-                /* Further reduce height for very small screens */
-            }
-        }
-
         /* Container for vertical and horizontal text */
         .content-container {
             display: flex;
             /* Align items horizontally */
             justify-content: space-between;
             /* Space between vertical and horizontal text */
-            align-items: flex-start;
-            /* Align items at the top */
+            align-items: first baseline;
+            /* Align items of the page */
             gap: 20px;
             /* Add spacing between the two sections */
             padding: 20px;
+
         }
 
         .vertical-text {
@@ -407,6 +329,130 @@
             border-radius: 8px;
         }
 
+        .slideshow-section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: center;
+            max-width: 900px;
+        }
+
+        .slideshow-title {
+            flex: 1;
+            text-align: left;
+            margin-right: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #6e6d6d;
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            /* Center the slideshow */
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            /* Hide all slides by default */
+            text-align: center;
+        }
+
+        .slide img {
+            width: 100%;
+            /* Make the image responsive */
+            border-radius: 8px;
+        }
+
+        .image-description {
+            font-size: 14px;
+            color: #555;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Navigation buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 10px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .prev {
+            left: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .slide.show {
+            display: block;
+            /* Show the current slide */
+        }
+
+        /* Mobile-specific styles for image slides */
+        @media (max-width: 768px) {
+            .slideshow-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .slideshow-title {
+                text-align: center;
+                margin: 0 0 20px 0;
+                font-size: 20px;
+            }
+
+            .slideshow-container {
+                max-width: 100%;
+                /* Allow the slideshow to take full width */
+                padding: 0 10px;
+                /* Add some padding for mobile */
+            }
+
+            .slide img {
+                width: 100%;
+                /* Ensure the image scales properly */
+                height: auto;
+                /* Maintain aspect ratio */
+            }
+
+            .image-description {
+                font-size: 12px;
+                /* Reduce font size for descriptions */
+                margin-top: 5px;
+                /* Adjust spacing */
+            }
+
+            .prev,
+            .next {
+                font-size: 14px;
+                /* Reduce button size for mobile */
+                padding: 8px;
+                /* Adjust padding for smaller buttons */
+            }
+        }
+
         /* Mobile-specific styles */
         @media (max-width: 768px) {
             #intro {
@@ -479,14 +525,11 @@
     <!-- Top descriptive section -->
     <section id="intro"
         style="align-items: flex-start;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 40px 20px;">
-        <h1 style="text-align: center; font-size: 32px; margin-top:40px;margin-bottom: 40px; color: #38280a;">About
+        <h1 style="text-align: center; font-size: 32px; margin-top:40px;margin-bottom: 60px; color: #38280a;">About
             量子序化所</h1>
 
         <p style="align-items: flex-start;font-size: 1.2em; color: #555; margin-bottom: 20px; text-align: justify;">
             前言：每個物體皆由量子所構成，而量子本身具有波粒二象性，即同時具備粒子與波動的性質。這些量子以不斷振動的方式存在，其波動在自然狀態下可能是彼此雜亂無序的。量子序化所專注於提升物質的穩定性與純度。
-        </p>
-
-        <p style="font-size: 1.2em; color: #555; margin-bottom: 30px; text-align: justify;">
             當這些頻率達到與宇宙自然場域的共振條件時，產生一種宏觀與微觀層級的同步連結。開啟人體與宇宙之間資訊共振的通道，當頻率對準時，便能接收宇宙所傳遞的訊號與智慧。
         </p>
 
@@ -502,9 +545,11 @@
             <p
                 style="font-size: 1.2em; line-height: 1.6; margin-bottom: 20px; text-align: left;border: 2px solid #ccc; padding: 15px; border-radius: 8px; ">
                 作法：本技術採用全球獨創之專利設備，透過精密控制程序，使物質在溫度下降的過程中逐漸精煉與穩定。當系統進入極低溫環境，並輔以1–3大氣壓的壓力控制，會開始以正弦波（sine
-                wave）模式對目標物質進行序化處理。這種序化方式能夠重新排列物質內部的分子與量子波動結構，促進其趨向同步穩定的狀態。
+                wave）模式對目標物質進行序化處理。這種序化方式能夠重新排列物質內部的分子結構，促進其趨向同步穩定的狀態。
             </p>
         </div>
+
+
 
         <!-- 淡入效果動畫 -->
         <style>
@@ -565,47 +610,76 @@
                 }
             }
         </style>
-        <div class="about-section">
-            <img src="images/太極爐.jpeg" alt="About Image 1" />
-            <!-- <img src="images/about2.jpg" alt="About Image 2" /> -->
-            <p style="text-align: justify; font-size: 16px;">
-                運用氣體動力產生能量波，藉著量子隧穿效應及陰陽兩爐氣流左旋、右旋所產生的量子糾纏，形成一個可降低亂度 (entropy) 達到減熵狀態的能量場。
-                想要體驗或參觀，歡迎<a href="#content-container" style="color: #1e5437; text-decoration: none;">來電預約</a>。</p>
+        <section class="slideshow-section" style="margin-top: 50px;">
+            <div class="slideshow-title">
+                <h2 style="writing-mode: vertical-lr;"> [ 量子序化應用領域 ]</h2>
+            </div>
+            <div class="slideshow-container">
+                <div class="slide">
+                    <img src="images/cryogenic咖啡豆.jpeg" alt="禪凍咖啡" />
+                    <p class="image-description">
+                        禪凍咖啡：咖啡豆心在 SPA 的過程中通透，鑿出咖啡香氣的軌跡，帶來更豐富的風味與香氣，經過序化的咖啡喝了不易心悸哦。
+                    </p>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <img src="images/zen_vibe_wine.jpeg" alt="太極爐" />
+                    <p class="image-description">
+                        量子序化酒：酒經過量子序化後，口感與香氣明顯提升，並減少酒精對身體的負擔。經過序化的酒品，像是高粱、威士忌，讓你在享受美酒的同時，也能感受到身心的平靜與放鬆。（註：酒精飲品請適量飲用）
+                    </p>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <img src="images/cryogenic_water.jpeg" alt="量子序化水" />
+                    <p class="image-description">
+                        小分子水：經過量子序化處理的小分子水，能夠更有效地滲透細胞膜，促進細胞的代謝與排毒，提升身體的水合作用。
+                    </p>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <img src="images/小提琴＿弓.jpeg" alt="小提琴弓" />
+                    <p class="image-description">
+                        小提琴弦、弓：經過量子序化處理的小提琴弓，提升了材料的穩定性與共振性能，帶來更純淨的音色。
+                    </p>
+                </div>
+                <!-- Navigation Buttons -->
+                <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+                <a class="next" onclick="changeSlide(1)">&#10095;</a>
+            </div>
+        </section>
+
+
+        <div class="content-container" id="content-container" style="border-top: 1px solid #ccc;">
+            <!-- Contact Information -->
+
+            <div class="horizontal-text">
+                <p style=" border-top: 20px ;max-width: 400px; color: gray;margin-bottom: 20px;"> Please feel free
+                    to
+                    email us or call us during business hour if you have any questions or interested to collaborate.
+                </p>
+                <p> Opening Hours 10:00 a.m. - 6:00 p.m.</p>
+                <p> TEL 03-318-0248</p>
+                <p> MAIL cryox.tw@gmail.com</p>
+                <p> Address 330桃園市龜山區大湖路63號</p>
+            </div>
+
+            <div class="vertical-text">
+                <p>量子序化所</p>
+                <p style="font-size: 24px; margin-top: 10px;">CryoX </p>
+            </div>
 
         </div>
-    </section>
-    </header>
 
 
+        <!-- Footer -->
+        <div>
 
-    <div class="content-container" id="content-container" style="border-top: 1px solid #ccc;">
-        <!-- Contact Information -->
-
-        <div class="horizontal-text">
-            <p style=" border-top: 20px ;max-width: 400px; color: gray;margin-bottom: 20px;"> Please feel free to
-                email us or call us during business hour if you have any questions or interested to collaborate.
-            </p>
-            <p> Opening Hours 10:00 a.m. - 6:00 p.m.</p>
-            <p> TEL 03-318-0248</p>
-            <p> MAIL cryox.tw@gmail.com</p>
-            <p> Address 330桃園市龜山區大湖路63號</p>
+            <footer class=" footer">
+                <br> 養好身心，過好日子
+                <br> © CryoX. 版權所有。All rights reserved.
+            </footer>
         </div>
-
-        <div class="vertical-text">
-            <p>量子序化所</p>
-            <p style="font-size: 24px; margin-top: 10px;">CryoX </p>
-        </div>
-
-    </div>
-
-    <!-- Footer -->
-    <div>
-
-        <footer class=" footer">
-            <br> 養好身心，過好日子
-            <br> © CryoX. 版權所有。All rights reserved.
-        </footer>
-    </div>
 
 </body>
 
@@ -631,7 +705,37 @@
 
     if (window.scrollY > 100 || window.innerWidth <= 767) { hamburgerBtn.style.display = 'block'; } else {
         hamburgerBtn.style.display = 'none';
-    } </script>
+    }
+
+    let slideIndex = 0;
+
+    function showSlides(index) {
+        const slides = document.getElementsByClassName("slide");
+        if (index >= slides.length) {
+            slideIndex = 0;
+        }
+        if (index < 0) {
+            slideIndex = slides.length - 1;
+        }
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex].style.display = "block";
+    }
+
+    function changeSlide(n) {
+        showSlides(slideIndex += n);
+    }
+
+    // Initialize the slideshow
+    showSlides(slideIndex);
+
+    // Optional: Auto-play the slideshow
+    setInterval(() => {
+        changeSlide(1);
+    }, 5000); // Change slide every 5 seconds
+
+</script>
 
 
 </html>
