@@ -7,6 +7,8 @@
     <title>量子序化</title>
     <link rel="icon" href="images/black_logo.png" type="image/png" />
 
+
+
     <style>
         /* styles.css */
         /* Basic Reset */
@@ -352,7 +354,7 @@
             font-size: 24px;
             font-weight: bold;
             color: #6e6d6d;
-            writing-mode: vertical-rl;
+            writing-mode: vertical-lr;
             /* Make text vertical */
         }
 
@@ -493,6 +495,92 @@
                 /* Reduce padding for framed text */
             }
         }
+
+        /* New Product Section */
+        .new-product-container {
+            margin-top: 50px;
+            border-top: 1.5px solid #ccc;
+            padding-top: 20px;
+        }
+
+        .new-product-title {
+            text-align: left;
+            margin-right: 150px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #6e6d6d;
+            margin-bottom: 30px;
+        }
+
+        .new-product-content {
+            display: flex;
+            flex-wrap: wrap;
+            /* Allow wrapping for mobile */
+            align-items: flex-start;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .new-product-image {
+            width: 400px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .new-product-description {
+            flex: 1;
+            /* Allow the text to take up remaining space */
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            text-align: left;
+        }
+
+        /* Remaining text below */
+        .new-product-details {
+            font-size: 16px;
+            color: #333;
+            text-align: left;
+        }
+
+        .new-product-details ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .new-product-details ul li {
+            /* display: inline-block; */
+            margin: 5px 10px;
+            font-size: 18px;
+            color: #505151;
+            font-weight: bold;
+        }
+
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            .new-product-content {
+                flex-direction: column;
+                /* Stack image and text vertically */
+                align-items: center;
+                /* Center-align content */
+            }
+
+            .new-product-image {
+                width: 100%;
+                /* Full width for mobile */
+                max-width: 300px;
+                /* Limit the maximum width */
+            }
+
+            .new-product-description {
+                text-align: center;
+                /* Center-align text for mobile */
+                margin-top: 20px;
+            }
+        }
     </style>
 
 </head>
@@ -622,6 +710,7 @@
         <div class="slideshow-section" style="margin-top: 50px;">
             <div class="slideshow-title">
                 <h2> [ 量子序化應用領域 ]</h2>
+                <p style="font-size: 14px; color: gray;">歡迎各家酒廠、保健食品廠商、水廠 ... 洽談合作。</p>
             </div>
             <div class="slideshow-container">
                 <div class="slide">
@@ -657,6 +746,26 @@
                 <a class="next" onclick="changeSlide(1)">&#10095;</a>
             </div>
         </div>
+        <div class="new-product-container" style="margin-top: 50px; border-top: 1.5px solid #ccc;">
+            <h2 class="new-product-title">[ 人也可以被量子序化？ 熵減太極爐]</h2>
+            <div class="new-product-content">
+                <img src="images/太極爐.jpeg" alt="New Product" class="new-product-image" />
+                <div class="new-product-description">
+                    <p>經多年研究，我們終於也推出了針對人體、非侵入性的序化專利機器 <strong>「熵減太極爐」</strong>
+                    </p>
+                    <p style="margin-left: 60px; margin-right: 160px; margin-top: 40px;"> “ 萬物一誕生就朝向亂度增加 –
+                        熵增的趨勢前進，當亂度大到一個程度，就走向滅亡 ”</p>
+                </div>
+                <div class="new-product-details">
+                    <p>太極爐是個「熵減」利器， 經過序化的調節，達養生、抗衰老目的。運用氣體動力產生能量波，藉著量子隧穿效應及太極陰陽兩爐氣流左旋、右旋所產生的量子糾纏，形成一個能將人體序化並降低亂度
+                        (entropy) 達到減熵狀態的能量場。</p>
+
+                    <p>
+                        我們提供太極爐坐爐體驗，亦有提供診所、企業及家用太極爐，歡迎<a href="#content-container"
+                            style="color: #978521; text-decoration: none;">來電預約</a>、一起減熵。
+                    </p>
+                </div>
+            </div>
     </section>
 
 
