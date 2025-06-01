@@ -594,6 +594,15 @@
                 margin-top: 20px;
             }
 
+            #lang-selector {
+                /*on the top tight*/
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                left: auto;
+                z-index: 1100;
+            }
+
 
         }
 
@@ -614,16 +623,6 @@
             z-index: 1100;
             display: flex;
             align-items: center;
-        }
-
-        @media(max-width: 767px) {
-            #lang-selector {
-                top: auto;
-                bottom: 10px;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
         }
     </style>
 
