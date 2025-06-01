@@ -141,6 +141,7 @@
                 max-width: 300px;
             }
 
+
             .nav-desktop {
                 display: none;
             }
@@ -592,6 +593,8 @@
                 /* Center-align text for mobile */
                 margin-top: 20px;
             }
+
+
         }
 
         .lang-link {
@@ -603,6 +606,18 @@
         .lang-link:hover {
             color: rgb(28, 93, 55);
         }
+
+        /* language selector */
+        #desktop-lang-selector {
+            display: block;
+        }
+
+        /* hide when mobile */
+        @media (max-width: 767px) {
+            #desktop-lang-selector {
+                display: none;
+            }
+        }
     </style>
 
 </head>
@@ -610,11 +625,9 @@
 
 <body>
     <header>
-
-        <!-- Navigation for desktop -->
         <!-- Language Switch Button -->
-
-        <div style="position: fixed; top: 20px; left: 20px; z-index: 1100; display: flex; align-items: center;">
+        <div id="desktop-lang-selector"
+            style="position: fixed; top: 20px; left: 20px; z-index: 1100; display: flex; align-items: center;">
             <div style="text-align:center; position:relative; padding:0 10px;">
                 <span class="lang-link" style="cursor:pointer;" onclick="setLanguage('zh')">中文</span>
                 <div id="dot-zh"
@@ -628,6 +641,8 @@
                     style="width:4px; height:4px; background:black; border-radius:50%; margin: 4px auto 0; display:none;">
                 </div>
             </div>
+
+            <!-- Navigation for desktop -->
             <nav class="nav-desktop" style="position: fixed;top: 0; right: 0; z-index: 1000;">
 
                 <ul>

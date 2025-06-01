@@ -390,6 +390,18 @@
 			color: gray;
 			text-align: center;
 		}
+
+		/* language selector */
+		#desktop-lang-selector {
+			display: block;
+		}
+
+		/* hide when mobile */
+		@media (max-width: 767px) {
+			#desktop-lang-selector {
+				display: none;
+			}
+		}
 	</style>
 
 </head>
@@ -404,7 +416,8 @@
 				Syncronization)，指的是透過某種調整或干預，使這些原本獨立、無序的量子波動趨於同步化與共振化。在這個過程中，物體內部的熵（entropy）—
 				也就是無序的亂度會逐漸降低，產生穩定而有規律的振動頻率。</p>
 
-			<div style="display: flex; align-items: center; margin-left: 500px; margin-top: 10px; margin-bottom: 20px;">
+			<div id="desktop-lang-selector"
+				style="display: flex; align-items: center; margin-left: 500px; margin-top: 10px; margin-bottom: 20px;">
 				<div style="text-align:center; position:relative; padding:0 10px;">
 					<span class="lang-link" style="cursor:pointer;" onclick="setLanguage('zh')">中文</span>
 					<div id="dot-zh"
@@ -447,10 +460,11 @@
 					<li><a href="about.html">About</a></li>
 					<li><a href="product.html">Product</a></li>
 					<li><a href="#content-container">Contact</a></li>
-					<button onclick="setLanguage('zh')">中文</button>
-					<button onclick="setLanguage('en')">English</button>
 				</ul>
-
+				<div style="margin:20px; padding:10px; border-top:1px solid #ccc;">
+					<span id="lang-zh" class="lang-link" style="cursor:pointer; margin-right:10px;">中文</span>
+					<span id="lang-en" class="lang-link" style="cursor:pointer;">English</span>
+				</div>
 			</nav>
 	</header>
 	<!-- Slideshow -->
