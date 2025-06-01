@@ -368,6 +368,10 @@
 				display: none;
 				/* Do not show vertical text on mobile */
 			}
+
+			#desktop-lang-selector {
+				display: none;
+			}
 		}
 
 		.horizontal-text {
@@ -394,13 +398,6 @@
 		/* language selector */
 		#desktop-lang-selector {
 			display: block;
-		}
-
-		/* hide when mobile */
-		@media (max-width: 767px) {
-			#desktop-lang-selector {
-				display: none;
-			}
 		}
 	</style>
 
@@ -460,11 +457,12 @@
 					<li><a href="about.html">About</a></li>
 					<li><a href="product.html">Product</a></li>
 					<li><a href="#content-container">Contact</a></li>
+					<li style="margin-top:20px; border-top:1px solid #ccc; padding-top:10px;">
+						<span style="cursor:pointer; margin-right:10px;" onclick="setLanguage('zh')">中文</span>
+						<span style="cursor:pointer;" onclick="setLanguage('en')">English</span>
+					</li>
 				</ul>
-				<div style="margin:20px; padding:10px; border-top:1px solid #ccc;">
-					<span id="lang-zh" class="lang-link" style="cursor:pointer; margin-right:10px;">中文</span>
-					<span id="lang-en" class="lang-link" style="cursor:pointer;">English</span>
-				</div>
+
 			</nav>
 	</header>
 	<!-- Slideshow -->
@@ -481,6 +479,7 @@
 
 
 	<script>
+
 
 		document.addEventListener('DOMContentLoaded', () => {
 			const slides = document.querySelectorAll('.slide');
@@ -541,6 +540,14 @@
 
 		// Also toggle the mobile menu
 		document.querySelector('.nav-mobile').classList.toggle('open');
+	});
+
+	//add language selector functionality for mobile
+	document.querySelectorAll('.nav-mobile li span').forEach(span => {
+		span.addEventListener('click', () => {
+			const lang = span.textContent === '中文' ? 'zh' : 'en';
+			setLanguage(lang);
+		});
 	});
 
 
