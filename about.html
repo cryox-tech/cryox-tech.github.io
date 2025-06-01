@@ -607,29 +607,23 @@
             color: rgb(28, 93, 55);
         }
 
-        /* language selector */
-        #desktop-lang-selector {
-            display: block;
+        #lang-selector {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1100;
+            display: flex;
+            align-items: center;
         }
 
-
         @media(max-width: 767px) {
-
-            #mobile-lang-selector {
-                position: fixed;
-                top: 10px;
+            #lang-selector {
+                top: auto;
+                bottom: 10px;
                 left: 50%;
                 transform: translateX(-50%);
-                z-index: 9999;
-                display: flex;
-                gap: 10px;
-                padding: 5px 10px;
-                border-radius: 5px;
             }
 
-            #desktop-lang-selector {
-                display: none !important;
-            }
         }
     </style>
 
@@ -639,19 +633,7 @@
 <body>
     <header>
         <!-- Language Switch Button -->
-        <div id="mobile-lang-selector" style="position: fixed; top: 20px; left: 20px; z-index: 1100; display: none;">
-            <span class="lang-link" style="cursor:pointer;" onclick="setLanguage('zh')">中文</span>
-            <div id="dot-zh"
-                style="width:4px; height:4px; background:rgb(71, 70, 70); border-radius:50%; margin: 4px auto 0; display:none;">
-            </div>
-            <div style="margin: 0 10px;">|</div>
-            <span class="lang-link" style="cursor:pointer; margin-left: 10px;" onclick="setLanguage('en')">EN</span>
-            <div id="dot-en"
-                style="width:4px; height:4px; background:rgb(71, 70, 70); border-radius:50%; margin: 4px auto 0; display:none;">
-            </div>
-        </div>
-        <div id="desktop-lang-selector"
-            style="position: fixed; top: 20px; left: 20px; z-index: 1100; display: flex; align-items: center;">
+        <div id="lang-selector">
             <div style="text-align:center; position:relative; padding:0 10px;">
                 <span class="lang-link" style="cursor:pointer;" onclick="setLanguage('zh')">中文</span>
                 <div id="dot-zh"
