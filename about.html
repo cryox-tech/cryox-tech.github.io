@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 
 <head>
     <meta charset="UTF-8" />
@@ -64,6 +64,7 @@
                 font-size: 14px;
             }
 
+
             /* Navigation on top right - horizontal */
             .nav-desktop {
                 background-color: transparent;
@@ -104,6 +105,7 @@
             #mobileNav {
                 display: none;
             }
+
         }
 
         /* Mobile styles */
@@ -591,6 +593,16 @@
                 margin-top: 20px;
             }
         }
+
+        .lang-link {
+            cursor: pointer;
+            color: black;
+            transition: color 0.3s;
+        }
+
+        .lang-link:hover {
+            color: rgb(28, 93, 55);
+        }
     </style>
 
 </head>
@@ -600,44 +612,64 @@
     <header>
 
         <!-- Navigation for desktop -->
-        <nav class="nav-desktop" style="position: fixed;top: 0; right: 0; z-index: 1000;">
+        <!-- Language Switch Button -->
 
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="product.html">Product</a></li>
-                <li><a href="#content-container">Contact</a></li>
-            </ul>
-            <a href="index.html" style="margin-left: 15px; margin-top: -10px; display: inline-block;">
-                <img src="images/black_logo.png" alt="Logo" style="height: 30px;">
-            </a>
-        </nav>
-        <!-- Hamburger for mobile -->
-        <!-- Hamburger Button -->
-        <button id="hamburgerBtn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+        <div style="position: fixed; top: 20px; left: 20px; z-index: 1100; display: flex; align-items: center;">
+            <div style="text-align:center; position:relative; padding:0 10px;">
+                <span class="lang-link" style="cursor:pointer;" onclick="setLanguage('zh')">中文</span>
+                <div id="dot-zh"
+                    style="width:4px; height:4px; background:black; border-radius:50%; margin: 4px auto 0; display:none;">
+                </div>
+            </div>
+            <div style="margin: 0 10px;">|</div>
+            <div style="text-align:center; position:relative; padding:0 10px;">
+                <span class="lang-link" style="cursor:pointer;" onclick="setLanguage('en')">English</span>
+                <div id="dot-en"
+                    style="width:4px; height:4px; background:black; border-radius:50%; margin: 4px auto 0; display:none;">
+                </div>
+            </div>
+            <nav class="nav-desktop" style="position: fixed;top: 0; right: 0; z-index: 1000;">
 
-        <!-- Navigation for mobile -->
-        <nav class="nav-mobile" id="mobileNav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="product.html">Product</a></li>
-                <li><a href="#content-container">Contact</a></li>
-            </ul>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="product.html">Product</a></li>
+                    <li><a href="#content-container">Contact</a></li>
+                </ul>
+                <a href="index.html" style="margin-left: 15px; margin-top: -10px; display: inline-block;">
+                    <img src="images/black_logo.png" alt="Logo" style="height: 30px;">
+                </a>
+            </nav>
 
-        </nav>
+
+            <!-- Hamburger for mobile -->
+            <!-- Hamburger Button -->
+            <button id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation for mobile -->
+            <nav class="nav-mobile" id="mobileNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="product.html">Product</a></li>
+                    <li><a href="#content-container">Contact</a></li>
+                </ul>
+
+            </nav>
     </header>
 
     <!-- Top descriptive section -->
     <section id="intro">
-        <h1 style="text-align: center; font-size: 32px; margin-top:40px;margin-bottom: 60px; color: #38280a;">About
+        <h1 id="title"
+            style="text-align: center; font-size: 32px; margin-top:40px;margin-bottom: 60px; color: #38280a;">About
             量子序化所</h1>
 
-        <p style="align-items: flex-start;font-size: 1.2em; color: #555; margin-bottom: 20px; text-align: justify;">
+        <p id="description"
+            style="align-items: flex-start;font-size: 1.2em; color: #555; margin-bottom: 20px; text-align: justify;">
             前言：每個物體皆由量子所構成，而量子本身具有波粒二象性，即同時具備粒子與波動的性質。這些量子以不斷振動的方式存在，其波動在自然狀態下可能是彼此雜亂無序的。量子序化所專注於提升物質的穩定性與純度。
             當這些頻率達到與宇宙自然場域的共振條件時，產生一種宏觀與微觀層級的同步連結。開啟人體與宇宙之間資訊共振的通道，當頻率對準時，便能接收宇宙所傳遞的訊號與智慧。
         </p>
@@ -651,8 +683,8 @@
                 opacity: 0; /* 初始淡出 */
                 animation: fadeIn 2s forwards;
                 ">
-            <p
-                style="font-size: 1.2em; line-height: 1.6; margin-bottom: 20px; text-align: left;border: 2px solid #ccc; padding: 15px; border-radius: 8px; ">
+            <p id='framed-words' style=" font-size: 1.2em; line-height: 1.6; margin-bottom: 20px; text-align: left;border: 2px solid
+                #ccc; padding: 15px; border-radius: 8px; ">
                 作法：本技術採用全球獨創之專利設備，透過精密控制程序，使物質在溫度下降的過程中逐漸精煉與穩定。當系統進入極低溫環境，並輔以1–3大氣壓的壓力控制，會開始以正弦波（sine
                 wave）模式對目標物質進行序化處理。這種序化方式能夠重新排列物質內部的分子結構，促進其趨向同步穩定的狀態。
             </p>
@@ -717,37 +749,34 @@
                 }
             }
         </style>
-        <div class="slideshow-section" style="margin-top: 50px;">
+        <div class=" slideshow-section" style="margin-top: 50px;">
             <div class="slideshow-title">
-                <h2> [ 量子序化應用領域 ]</h2>
-                <p style="font-size: 14px; color: gray;">歡迎各家酒廠、保健食品廠商、水廠 ... 洽談合作。</p>
+                <h2 id="slideshow-title"> [ 量子序化應用領域 ]</h2>
+                <p id="collaboration-invite" style="font-size: 14px; color: gray;">歡迎各家酒廠、保健食品廠商、水廠 ... 洽談合作。</p>
             </div>
             <div class="slideshow-container">
                 <div class="slide">
                     <img src="images/cryogenic咖啡豆.jpeg" alt="禪凍咖啡" />
-                    <p class="image-description">
+                    <p class="image-description" id="coffee-description">
                         禪凍咖啡：咖啡豆心在 SPA 的過程中通透，鑿出咖啡香氣的軌跡，帶來更豐富的風味與香氣，經過序化的咖啡喝了不易心悸哦。
                     </p>
                 </div>
-                <!-- Slide 3 -->
                 <div class="slide">
                     <img src="images/zen_vibe_wine.jpeg" alt="太極爐" />
-                    <p class="image-description">
+                    <p class="image-description" id="wine-description">
                         量子序化酒：酒經過量子序化後，口感與香氣明顯提升，並減少酒精對身體的負擔。經過序化的酒品，像是高粱、威士忌，讓你在享受美酒的同時，也能感受到身心的平靜與放鬆。（註：酒精飲品請適量飲用）
                     </p>
                 </div>
 
-                <!-- Slide 2 -->
                 <div class="slide">
                     <img src="images/cryogenic_water.jpeg" alt="量子序化水" />
-                    <p class="image-description">
+                    <p class="image-description" id="water-description">
                         小分子水：經過量子序化處理的小分子水，能夠更有效地滲透細胞膜，促進細胞的代謝與排毒，提升身體的水合作用。
                     </p>
                 </div>
-                <!-- Slide 3 -->
                 <div class="slide">
                     <img src="images/小提琴＿弓.jpeg" alt="小提琴弓" />
-                    <p class="image-description">
+                    <p class="image-description" id="violin-description">
                         小提琴弦、弓：經過量子序化處理的小提琴弓，提升了材料的穩定性與共振性能，帶來更純淨的音色。
                     </p>
                 </div>
@@ -757,20 +786,22 @@
             </div>
         </div>
         <div class="new-product-container" style="margin-top: 50px; border-top: 1.5px solid #ccc;">
-            <h2 class="new-product-title">[ 人也可以量子序化？ 熵減太極爐]</h2>
+            <h2 class="new-product-title" id="product title">[ 人也可以量子序化？ 熵減太極爐]</h2>
             <div class="new-product-content">
                 <img src="images/太極爐.jpeg" alt="New Product" class="new-product-image" />
                 <div class="new-product-description">
-                    <p>經多年研究，我們終於也推出了針對人體、非侵入性的序化專利機器 <strong>「熵減太極爐」</strong>
+                    <p id="new-product-description1">經多年研究，我們終於也推出了針對人體、非侵入性的序化專利機器 <strong>「熵減太極爐」</strong>
                     </p>
-                    <p style="margin-left: 50px; margin-right: 140px; margin-top: 40px;"> “ 萬物一誕生就朝向亂度增加 –
+                    <p id="new-product-description2" style="margin-left: 50px; margin-right: 140px; margin-top: 40px;">
+                        “ 萬物一誕生就朝向亂度增加 –
                         熵增的趨勢前進，當亂度大到一個程度，就走向滅亡 ”</p>
                 </div>
                 <div class="new-product-details">
-                    <p>太極爐是個「熵減」利器， 經過序化的調節，達養生、抗衰老目的。運用氣體動力產生能量波，藉著量子隧穿效應及太極陰陽兩爐氣流左旋、右旋所產生的量子糾纏，形成一個能將人體序化並降低亂度
+                    <p id="new-product-details">太極爐是個「熵減」利器，
+                        經過序化的調節，達養生、抗衰老目的。運用氣體動力產生能量波，藉著量子隧穿效應及太極陰陽兩爐氣流左旋、右旋所產生的量子糾纏，形成一個能將人體序化並降低亂度
                         (entropy) 達到減熵狀態的能量場。</p>
 
-                    <p>
+                    <p id="contact-invite">
                         我們提供太極爐坐爐體驗，亦有提供診所、企業及家用太極爐，歡迎<a href="#content-container"
                             style="color: #978521; text-decoration: none;">來電預約</a>、一起減熵。
                     </p>
@@ -780,24 +811,21 @@
 
 
     <div class="content-container" id="content-container" style="border-top: 1px solid #ccc;">
-        <div class="horizontal-text">
-            <p style=" border-top: 20px ;max-width: 400px; color: gray;margin-bottom: 20px;"> Please feel free
-                to
-                email us or call us during business hour if you have any questions or interested to collaborate.
+        <div class="horizontal-text" id="contact-section">
+            <p id="p-intro" style=" border-top: 20px ;max-width: 400px; color: gray;margin-bottom: 20px;">
+                如果您有任何問題或有興趣合作，請隨時透過電子郵件或在營業時間內致電我們。
             </p>
-            <p> 🗒 週一 - 週五 10:00 a.m. - 6:00 p.m.</p>
-            <p> 📞 03-318-0248 </p>
-            <p> 📩 cryox.tw@gmail.com </p>
-            <p> 📍 330 桃園市龜山區大湖路63號</p>
+            <p id="p-hours"> 週一 - 週五 10:00 a.m. - 6:00 p.m.</p>
+            <p id="p-phone"> 03-318-0248 </p>
+            <p id="p-email"> cryox.tw@gmail.com </p>
+            <p id="p-address"> 330 桃園市龜山區大湖路63號</p>
         </div>
 
         <div class="vertical-text">
             <p>量子序化所</p>
             <p style="font-size: 24px; margin-top: 10px;">CryoX </p>
         </div>
-
     </div>
-
 
 
     <!-- Footer -->
@@ -863,6 +891,94 @@
     }, 10000); // Change slide every 5 seconds
 
 </script>
+<script>
+    const translations = {
+        en: {
+            'title': 'About CryoX',
+            'description': 'Introduction: Every object is made up of quantum particles, which exhibit wave-particle duality, possessing both particle and wave properties. These quantum particles exist in a state of constant vibration, and their waves may be disordered in their natural state. CryoX focuses on enhancing the stability and purity of matter. When these frequencies resonate with the natural fields of the universe, a macro and micro-level synchronization occurs, opening a channel for information resonance between the human body and the universe. When the frequencies align, one can receive signals transmitted by the universe.',
+            'framed-words': 'Method: This technology employs a patented device that gradually refines and stabilizes matter through precise control processes as the temperature decreases. When the system enters an extremely low-temperature environment, combined with pressure control of 1–3 atmospheres, it begins to process the target material in a sine wave mode. This method of serialization can rearrange the molecular structure within the material, promoting a state of synchronized stability.',
+            'slideshow-title': '[ Applications ]',
+            'collaboration-invite': 'We welcome breweries, health food manufacturers, water companies, and more to discuss collaboration.',
+            'coffee-description': 'CryoX Zen Coffee: The heart of the coffee bean undergoes a spa-like process, carving out the trajectory of coffee aroma, resulting in richer flavors and fragrances. The synchronized coffee is less likely to cause palpitations.',
+            'wine-description': 'Quantum Synchronized Wine: After quantum synchronization, the taste and aroma of the wine are significantly enhanced, reducing the burden of alcohol on the body. Synchronized spirits like Kaoliang and whiskey allow you to enjoy fine wine while experiencing tranquility and relaxation. (Note: Please consume alcoholic beverages in moderation.)',
+            'water-description': 'Small Molecule Water: Small molecule water processed through quantum synchronization can penetrate cell membranes more effectively, promoting cellular metabolism and detoxification, enhancing the body\'s hydration.',
+            'violin-description': 'Violin Strings and Bow: Violin bows processed through quantum synchronization enhance the stability and resonance performance of the material, resulting in purer sound quality.',
+            'product title': '[ Can Humans Also Be Quantum Synchronized?]',
+            'new-product-description1': 'After years of research, we have finally launched a non-invasive synchronization patented machine for the human body, the <strong>“Entropy Reduction Tai Chi Furnace”</strong>.',
+            'new-product-description2': '“Everything is born with a tendency towards increasing disorder – the trend of entropy increase. When disorder reaches a certain level, it leads to extinction.”',
+            'new-product-details': 'The Tai Chi Furnace is a powerful tool for "entropy reduction." Through synchronization adjustments, it achieves health preservation and anti-aging purposes. Utilizing gas dynamics to generate energy waves, it employs quantum tunneling effects and the left and right rotating airflow of Tai Chi Yin-Yang dual furnaces to create a quantum entangled energy field that can synchronize the human body and reduce entropy, achieving a state of reduced disorder.',
+            'contact-invite': 'We offer Tai Chi Furnace sitting experiences and also provide Tai Chi Furnaces for clinics, businesses, and home use. We welcome you to <a href="#content-container" style="color: #978521; text-decoration: none;">call to make an appointment</a> and reduce entropy together.',
+            contactIntro: "If you have any questions or are interested in collaboration, please feel free to email us or call during business hours.",
+            hours: "Monday - Friday 10:00 a.m. - 6:00 p.m.",
+            phone: "03-318-0248",
+            email: "cryox.tw@gmail.com",
+            address: "No. 63, Dahu Road, Guishan District, Taoyuan City",
+            'footer': 'Nurture your body and mind, enjoy life. © CryoX. All rights reserved.'
+        },
+        zh: {
+            'title': '關於 量子序化所',
+            'description': '前言：每個物體皆由量子所構成，而量子本身具有波粒二象性，即同時具備粒子與波動的性質。這些量子以不斷振動的方式存在，其波動在自然狀態下可能是彼此雜亂無序的。量子序化所專注於提升物質的穩定性與純度。當這些頻率達到與宇宙自然場域的共振條件時，產生一種宏觀與微觀層級的同步連結。開啟人體與宇宙之間資訊共振的通道，當頻率對準時，便能接收宇宙所傳遞的訊號與智慧。',
+            'framed-words': '作法：本技術採用全球獨創之專利設備，透過精密控制程序，使物質在溫度下降的過程中逐漸精煉與穩定。當系統進入極低溫環境，並輔以1–3大氣壓的壓力控制，會開始以正弦波（sine wave）模式對目標物質進行序化處理。這種序化方式能夠重新排列物質內部的分子結構，促進其趨向同步穩定的狀態。',
+            'slideshow-title': '[ 量子序化應用領域 ]',
+            'collaboration-invite': '歡迎各家酒廠、保健食品廠商、水廠 ... 洽談合作。',
+            'coffee-description': '禪凍咖啡：咖啡豆心在 SPA 的過程中通透，鑿出咖啡香氣的軌跡，帶來更豐富的風味與香氣，經過序化的咖啡喝了不易心悸哦。',
+            'wine-description': '量子序化酒：酒經過量子序化後，口感與香氣明顯提升，並減少酒精對身體的負擔。經過序化的酒品，像是高粱、威士忌，讓你在享受美酒的同時，也能感受到身心的平靜與放鬆。（註：酒精飲品請適量飲用）',
+            'water-description': '小分子水：經過量子序化處理的小分子水，能夠更有效地滲透細胞膜，促進細胞的代謝與排毒，提升身體的水合作用。',
+            'violin-description': '小提琴弦、弓：經過量子序化處理的小提琴弓，提升了材料的穩定性與共振性能，帶來更純淨的音色。',
+            'product title': '[人也可以量子序化？ 熵減太極爐]',
+            'new-product-description1': '經多年研究，我們終於也推出了針對人體、非侵入性的序化專利機器<strong>「熵減太極爐」</strong>',
+            'new-product-description2':
+                '"萬物一誕生就朝向亂度增加 – 熵增的趨勢前進，當亂度大到一個程度，就走向滅亡"',
 
+            'new-product-details': '太極爐是個「熵減」利器， 經過序化的調節，達養生、抗衰老目的。運用氣體動力產生能量波，藉著量子隧穿效應及太極陰陽兩爐氣流左旋、右旋所產生的量子糾纏，形成一個能將人體序化並降低亂度(entropy) 達到減熵狀態的能量場',
+            'contact-invite': '我們提供太極爐坐爐體驗，亦有提供診所、企業及家用太極爐，歡迎<a href = "#content-container"    style = "color: #978521; text-decoration: none;"> 來電預約</a >、一起減熵。',
+            contactIntro: "如果您有任何問題或有興趣合作，請隨時透過電子郵件或在營業時間內致電我們。",
+            hours: "週一 - 週五 10:00 a.m. - 6:00 p.m.",
+            phone: "03-318-0248",
+            email: "cryox.tw@gmail.com",
+            address: "桃園市龜山區大湖路63號",
+            'footer': '養好身心，過好日子 © CryoX. All rights reserved.'
+        }
+    };
+    function setLanguage(lang) {
+        localStorage.setItem('selectedLanguage', lang);
+        document.getElementById('dot-zh').style.display = 'none';
+        document.getElementById('dot-en').style.display = 'none';
+
+        if (lang === 'zh') {
+            document.getElementById('dot-zh').style.display = 'inline-block';
+        } else if (lang === 'en') {
+            document.getElementById('dot-en').style.display = 'inline-block';
+        }
+        document.getElementById('title').textContent = translations[lang]['title'];
+        document.getElementById('description').innerHTML = translations[lang]['description'];
+        document.getElementById('framed-words').innerHTML = translations[lang]['framed-words'];
+        document.getElementById('slideshow-title').textContent = translations[lang]['slideshow-title'];
+        document.getElementById('collaboration-invite').innerHTML = translations[lang]['collaboration-invite'];
+        document.getElementById('coffee-description').textContent = translations[lang]['coffee-description'];
+        document.getElementById('wine-description').textContent = translations[lang]['wine-description'];
+        document.getElementById('water-description').textContent = translations[lang]['water-description'];
+        document.getElementById('violin-description').textContent = translations[lang]['violin-description'];
+        document.getElementById('product title').textContent = translations[lang]['product title'];
+        document.getElementById('new-product-description1').innerHTML = translations[lang]['new-product-description1'];
+        document.getElementById('new-product-description2').innerHTML = translations[lang]['new-product-description2'];
+        document.getElementById('new-product-details').innerHTML = translations[lang]['new-product-details'];
+        document.getElementById('contact-invite').innerHTML = translations[lang]['contact-invite'];
+        document.querySelector('.footer').innerHTML = translations[lang]['footer'];
+        document.getElementById('p-intro').textContent = translations[lang].contactIntro;
+        document.getElementById('p-hours').textContent = `📅  ${translations[lang].hours}`;
+        document.getElementById('p-phone').textContent = `📞  ${translations[lang].phone}`;
+        document.getElementById('p-email').textContent = `📩  ${translations[lang].email}`;
+        document.getElementById('p-address').textContent = `📍  ${translations[lang].address}`;
+    }
+
+
+    // On page load, set the language based on saved preference
+    window.onload = () => {
+        const savedLang = localStorage.getItem('selectedLanguage') || 'zh'; // default to Chinese
+        setLanguage(savedLang);
+    };
+
+</script>
 
 </html>
