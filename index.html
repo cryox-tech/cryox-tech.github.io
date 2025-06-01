@@ -396,20 +396,23 @@
 		#lang-selector {
 			display: flex;
 			align-items: center;
-			margin-left: 500px;
+			margin-left: 480px;
 			margin-top: 10px;
 			margin-bottom: 20px;
+			text-align: center;
+			position: relative;
+			padding: 0 10px;
 		}
 
-		/*mobile lang selector*/
-		@media (max-width: 767px) {
+		@media(max-width: 767px) {
 			#lang-selector {
-				position: absolute;
-				top: 10px;
-				right: 20px;
-				margin-left: 0;
-				margin-top: 0;
-				margin-bottom: 0;
+				left: 50%;
+				transform: translateX(-50%);
+				display: flex;
+				background: rgba(255, 255, 255, 0.8);
+				padding: 8px 12px;
+				border-radius: 6px;
+				font-size: 14px;
 			}
 		}
 	</style>
@@ -427,17 +430,15 @@
 				也就是無序的亂度會逐漸降低，產生穩定而有規律的振動頻率。</p>
 
 			<div id="lang-selector">
-				<div style="text-align:center; position:relative; padding:0 10px;">
+				<div style="text-align:center; ">
 					<span class="lang-link" style="cursor:pointer;" onclick="setLanguage('zh')">中文</span>
-					<div id="dot-zh"
-						style="width:4px; height:4px; background:black; border-radius:50%; margin: 4px auto 0; display:none;">
+					<div id="dot-zh" style="width:4px; height:4px; background:black; border-radius:50%;  display:none;">
 					</div>
 				</div>
 				<div style="margin: 0 10px;">|</div>
-				<div style="text-align:center; position:relative; padding:0 10px;">
-					<span class="lang-link" style="cursor:pointer;" onclick="setLanguage('en')">EN</span>
-					<div id="dot-en"
-						style="width:4px; height:4px; background:black; border-radius:50%; margin: 4px auto 0; display:none;">
+				<div style="text-align:center; ">
+					<span class=" lang-link" style="cursor:pointer;" onclick="setLanguage('en')">EN</span>
+					<div id="dot-en" style="width:4px; height:4px; background:black; border-radius:50%;  display:none;">
 					</div>
 				</div>
 			</div>
